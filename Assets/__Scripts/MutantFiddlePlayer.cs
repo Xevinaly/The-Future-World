@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class MutantFiddlePlayer : MonoBehaviour {
     private int wasPressed = 0;
     [Header("Set in Inspector")]
-    public GameObject textbox;
+    public GameObject textbox, panel;
 	// Use this for initialization
 	void Start () {
  
@@ -26,10 +26,22 @@ public class MutantFiddlePlayer : MonoBehaviour {
         {
             wasPressed = 2;
             Text dialouge = textbox.GetComponent<Text>();
+            RectTransform box = textbox.GetComponent<RectTransform>();
             dialouge.text = "Howdy!";
         } else if (wasPressed == 3)
         {
             wasPressed = 4;
+            Text dialouge = textbox.GetComponent<Text>();
+            dialouge.text = "This is an example of NPC dialouge!";
+        } else if (wasPressed == 5)
+        {
+            wasPressed = 6;
+            Text dialouge = textbox.GetComponent<Text>();
+            dialouge.text = "Also, I'm a mutant fiddle player...";
+        }
+        else if (wasPressed == 7)
+        {
+            wasPressed = 8;
             Text dialouge = textbox.GetComponent<Text>();
             dialouge.text = "";
         }

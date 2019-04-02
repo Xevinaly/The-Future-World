@@ -5,8 +5,10 @@ using UnityEngine.Scripting.APIUpdating;
 
 public class PlayerController : MonoBehaviour
 {
+    Ray cameraRay;
+    RaycastHit cameraRayHit;
 
-	[Header("Set in Inspector")] 
+    [Header("Set in Inspector")] 
 	public float speed = 0.5f;
 
 	public Material npcMaterial;
@@ -21,7 +23,21 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate ()
 	{
 		Move();
+        Turn();
 	}
+
+    void Turn()
+    {
+        cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(cameraRay, out cameraRayHit))
+        {
+            //if (cameraRayHit.transform.tag == "ground")
+            //{
+                Vector3 targetPosition = new Vector3(cameraRayHit.point.x, transform.position.y, cameraRayHit.point.z);
+                transform.LookAt(targetPosition);
+            //}
+        }
+    }
 
 	void Move()
 	{
