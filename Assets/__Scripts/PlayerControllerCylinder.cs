@@ -8,26 +8,27 @@ public class PlayerControllerCylinder : MonoBehaviour
 {
     Ray cameraRay;
     RaycastHit cameraRayHit;
-	[Header("Set in Inspector")] 
-	public float speed = 0.5f;
-	Animator anim;
+    [Header("Set in Inspector")]
+    public float speed = 0.5f;
+    Animator anim;
 
-	float angle = 0;
-	
-	
-	void Awake(){
-		anim = GetComponent<Animator>();
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate ()
-	{
-		Rotate();
-		Move();
-	}
+    float angle = 0;
 
-	void Move()
-	{
+
+    void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        Rotate();
+        Move();
+    }
+
+    void Move()
+    {
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
         Vector3 pos = new Vector3(-hAxis, 0, -vAxis);
@@ -38,23 +39,23 @@ public class PlayerControllerCylinder : MonoBehaviour
         else
             anim.SetBool("IsWalking", false);
         transform.position += pos;
-	}
+    }
 
-	void Rotate()
-	{
-    //float hAxis = Input.GetAxis("Horizontal");
-    //float vAxis = Input.GetAxis("Vertical");
-    //if (vAxis != 0){
-    //	angle = (float) ((Math.Atan(hAxis/vAxis))*(180/Math.PI) + 45);
-    //	if (vAxis > 0)
-    //		angle += 180;
-    //}
-    //else if (hAxis < 0)
-    //	angle = 135;
-    //else if (hAxis > 0)
-    //	angle = 315;
-    //
-    //transform.rotation = Quaternion.Euler(0,angle,0);
+    void Rotate()
+    {
+        //float hAxis = Input.GetAxis("Horizontal");
+        //float vAxis = Input.GetAxis("Vertical");
+        //if (vAxis != 0){
+        //	angle = (float) ((Math.Atan(hAxis/vAxis))*(180/Math.PI) + 45);
+        //	if (vAxis > 0)
+        //		angle += 180;
+        //}
+        //else if (hAxis < 0)
+        //	angle = 135;
+        //else if (hAxis > 0)
+        //	angle = 315;
+        //
+        //transform.rotation = Quaternion.Euler(0,angle,0);
 
         cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(cameraRay, out cameraRayHit))
