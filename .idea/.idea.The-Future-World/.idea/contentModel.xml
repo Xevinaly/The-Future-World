@@ -15,7 +15,7 @@
           <e p="MutantFiddlePlayer.cs" t="Include" />
           <e p="NPC.cs" t="Include" />
           <e p="Pauser.cs" t="Include" />
-          <e p="PlayerController.cs" t="Include" />
+          <e p="PlayerControllerCylinder.cs" t="Include" />
           <e p="PlayerInventory.cs" t="Include" />
         </e>
         <e p="Plugins" t="Include">
