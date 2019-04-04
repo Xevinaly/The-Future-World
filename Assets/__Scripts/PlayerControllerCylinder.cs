@@ -10,21 +10,44 @@ public class PlayerControllerCylinder : MonoBehaviour
     RaycastHit cameraRayHit;
     [Header("Set in Inspector")]
     public float speed = 0.5f;
+    public float PlayerHealth = 100.0f;
+    public int playerDamage = 10;
     Animator anim;
 
     float angle = 0;
+    private float camdiff;
 
 
     void Awake()
     {
         anim = GetComponent<Animator>();
+        camdiff = Camera.main.transform.position.y - transform.position.y;
     }
 
+    private void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            shoot();
+        }
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
         Rotate();
         Move();
+    }
+
+    void shoot()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
+        {
+            if (hit.collider.gameObject.CompareTag("Enemy"))
+            {
+                hit.collider.GetComponent<Enemy>().EnemyHealth -= playerDamage;
+            }
+        }
     }
 
     void Move()
@@ -43,25 +66,13 @@ public class PlayerControllerCylinder : MonoBehaviour
 
     void Rotate()
     {
-        //float hAxis = Input.GetAxis("Horizontal");
-        //float vAxis = Input.GetAxis("Vertical");
-        //if (vAxis != 0){
-        //	angle = (float) ((Math.Atan(hAxis/vAxis))*(180/Math.PI) + 45);
-        //	if (vAxis > 0)
-        //		angle += 180;
-        //}
-        //else if (hAxis < 0)
-        //	angle = 135;
-        //else if (hAxis > 0)
-        //	angle = 315;
-        //
-        //transform.rotation = Quaternion.Euler(0,angle,0);
+        float mouseX = Input.mousePosition.x;
 
-        cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(cameraRay, out cameraRayHit))
-        {
-            Vector3 targetPosition = new Vector3(cameraRayHit.point.x, transform.position.y, cameraRayHit.point.z);
-            transform.LookAt(targetPosition);
-        }
+        float mouseY = Input.mousePosition.y;
+
+        Vector3 worldpos = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, camdiff));
+
+        Vector3 lookDirection = new Vector3(worldpos.x, transform.position.y, worldpos.z);
+        transform.LookAt(lookDirection);
     }
 }

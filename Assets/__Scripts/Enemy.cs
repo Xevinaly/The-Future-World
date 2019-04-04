@@ -9,18 +9,24 @@ public class Enemy : MonoBehaviour {
     public float moveSpeed = 3.0f;
     public float approximationRadius = 0.5f;
     public float timeAlarmed = 5.0f;
+    public float shootTime = 2.0f;
+    public float shootChargeTime = 1.0f;
+    public int EnemyHealth = 10;
+    public int EnemyDamage = 1;
 
     private bool alarm;
     private int pointPatroled;
     private Vector3 target;
     private NavMeshAgent agent;
     private float alarmTime;
+    private float timeToShoot;
+    private float chargeTime;
 	// Use this for initialization
 	void Start () {
         alarm = false;
         pointPatroled = 0;
         agent = GetComponent<NavMeshAgent>();
-        alarmTime = 0.0f;
+        timeReset();
         if(agent == null)
         {
             agent = gameObject.AddComponent<NavMeshAgent>();
@@ -46,6 +52,10 @@ public class Enemy : MonoBehaviour {
                 agent.SetDestination(patrolRoute[pointPatroled]);
             }
         }
+        if(EnemyHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
 	}
 
     private void OnTriggerStay(Collider other)
@@ -53,39 +63,58 @@ public class Enemy : MonoBehaviour {
         if (other.gameObject.CompareTag("Player"))
         {
             Vector3 distance = other.transform.position - transform.position;
-            RaycastHit[] hits = Physics.RaycastAll(transform.position, distance, distance.magnitude);
-            if (hits.Length == 0) print("No Objects");
             string tempTag = "";
-            float minDistance = Mathf.Infinity;
-            foreach(RaycastHit hit in hits)
+            RaycastHit hit;
+            if(Physics.Raycast(transform.position, distance,out hit, distance.magnitude))
             {
-                float temp = Vector3.Magnitude(hit.transform.position - transform.position);
-                if(temp < minDistance)
-                {
-                    minDistance = temp;
-                    tempTag = hit.transform.gameObject.tag;
-                }
+                tempTag = hit.collider.gameObject.tag;
             }
             if (other.gameObject.CompareTag(tempTag))
             {
                 alarm = true;
                 alarmTime = 0.0f;
                 target = other.transform.position;
+                timeToShoot += Time.deltaTime;
+                if (timeToShoot >= shootTime)
+                {
+                    agent.isStopped = true;
+                    chargeTime += Time.deltaTime;
+                    if(chargeTime >= shootChargeTime)
+                    {
+                        shoot(other.transform.position);
+                        timeReset();
+                        agent.isStopped = false;
+                    }
+                }
             }
             else
             {
                 if(alarmTime >= timeAlarmed)
                 {
                     alarm = false;
-                    alarmTime = 0.0f;
+                    timeReset();
                 }
                 alarmTime += Time.deltaTime;
             }
         }
     }
 
-    //public void Move(Vector3 speed)
-    //{
-    //    transform.position += speed;
-    //}
+    public void timeReset()
+    {
+        alarmTime = 0.0f;
+        timeToShoot = 0.0f;
+        chargeTime = 0.0f;
+    }
+
+    public void shoot(Vector3 target)
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, target - transform.position, out hit))
+        {
+            if (hit.collider.gameObject.CompareTag("Player"))
+            {
+                hit.collider.gameObject.GetComponent<PlayerControllerCylinder>().PlayerHealth -= EnemyDamage;
+            }
+        }
+    }
 }

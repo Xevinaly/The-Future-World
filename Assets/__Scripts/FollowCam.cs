@@ -33,6 +33,7 @@ public class FollowCam : MonoBehaviour {
     private void FixedUpdate()
     {
         if (POI == null) return;
-        transform.position = POI.transform.position + distance;
+        Vector3 temp = POI.transform.position + distance;
+        transform.position = Vector3.Lerp(transform.position, temp, 5.0f * Time.deltaTime);
     }
 }
