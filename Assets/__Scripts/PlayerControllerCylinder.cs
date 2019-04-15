@@ -11,7 +11,6 @@ public class PlayerControllerCylinder : MonoBehaviour
     [Header("Set in Inspector")]
     public float speed = 0.5f;
     public float PlayerHealth = 100.0f;
-    public int playerDamage = 10;
     Animator anim;
 
     float angle = 0;
@@ -24,30 +23,11 @@ public class PlayerControllerCylinder : MonoBehaviour
         camdiff = Camera.main.transform.position.y - transform.position.y;
     }
 
-    private void Update()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            shoot();
-        }
-    }
     // Update is called once per frame
     void FixedUpdate()
     {
         Rotate();
         Move();
-    }
-
-    void shoot()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
-        {
-            if (hit.collider.gameObject.CompareTag("Enemy"))
-            {
-                hit.collider.GetComponent<Enemy>().EnemyHealth -= playerDamage;
-            }
-        }
     }
 
     void Move()

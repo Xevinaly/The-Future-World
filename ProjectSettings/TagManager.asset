@@ -7,6 +7,8 @@ TagManager:
   - NPC
   - AudioLog
   - Collectible
+  - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - 
   - PostProcessing
   - Player
-  - 
+  - Shootable
   - 
   - 
   - 
