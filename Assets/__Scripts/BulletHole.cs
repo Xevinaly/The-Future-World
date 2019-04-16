@@ -13,7 +13,7 @@ public class BulletHole : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         timer = 0f;
-        mat = GetComponent<Renderer>().material;
+        mat = transform.GetChild(0).GetComponent<Renderer>().material;
         color = mat.color;
 	}
 	
