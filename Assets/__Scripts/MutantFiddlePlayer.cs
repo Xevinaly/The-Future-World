@@ -7,20 +7,22 @@ public class MutantFiddlePlayer : MonoBehaviour {
     private int wasPressed = 0;
     [Header("Set in Inspector")]
     public GameObject textbox;
-	// Use this for initialization
-	void Start () {
- 
-	}
-	
-	// Update is called once per frame
+
+    private bool hasTalkedTo;
+    private bool inRange;
+    
 	void FixedUpdate () {
-		if (Input.GetButtonDown("Fire1") && wasPressed != 1)
+		/*if (Input.GetButtonDown("Fire1") && wasPressed != 1)
         {
             wasPressed++;
-        }
+        }*/
+	    if (Input.GetButtonDown("Fire1"))
+	    {
+	        attemptDialog();
+	    }
 	}
 
-    private void OnTriggerStay(Collider other)
+    /*private void OnTriggerStay(Collider other)
     {
         if (wasPressed == 1)
         {
@@ -33,12 +35,33 @@ public class MutantFiddlePlayer : MonoBehaviour {
             Text dialouge = textbox.GetComponent<Text>();
             dialouge.text = "";
         }
-    }
+    }*/
 
+    private void OnTriggerEnter(Collider other)
+    {
+        inRange = true;
+        hasTalkedTo = false;
+    }
     private void OnTriggerExit(Collider other)
     {
         Text dialouge = textbox.GetComponent<Text>();
         dialouge.text = "";
+        inRange = false;
+        hasTalkedTo = false;
         wasPressed = 0;
+    }
+
+    private void attemptDialog()
+    {
+        if (!hasTalkedTo && inRange)
+        {
+            Text dialogue = textbox.GetComponent<Text>();
+            dialogue.text = "Howdy!";
+            hasTalkedTo = true;
+        } else if (hasTalkedTo)
+        {
+            Text dialogue = textbox.GetComponent<Text>();
+            dialogue.text = "";
+        }
     }
 }

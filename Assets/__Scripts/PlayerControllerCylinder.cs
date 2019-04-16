@@ -13,6 +13,7 @@ public class PlayerControllerCylinder : MonoBehaviour
     public float PlayerHealth = 100.0f;
     public int playerDamage = 10;
     Animator anim;
+    public PlayerInventory inventory;
 
     float angle = 0;
     private float camdiff;
@@ -76,5 +77,22 @@ public class PlayerControllerCylinder : MonoBehaviour
 
         Vector3 lookDirection = new Vector3(worldpos.x, transform.position.y, worldpos.z);
         transform.LookAt(lookDirection);
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("AudioLog"))
+        {
+            inventory.addAudioLog(other.gameObject.GetComponent<AudioLog>());
+            AudioClip logAudio = other.gameObject.GetComponent<AudioSource>().clip;
+            Camera.main.GetComponent<AudioSource>().clip = logAudio;
+            Camera.main.GetComponent<AudioSource>().Play();
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.CompareTag("Collectible"))
+        {
+            inventory.addCollectible(other.gameObject.GetComponent<Collectible>());
+            Destroy(other.gameObject);
+        }
     }
 }
