@@ -66,9 +66,11 @@ public class PlayerControllerCylinder : MonoBehaviour
 
     void Rotate()
     {
+     
         float mouseX = Input.mousePosition.x;
 
         float mouseY = Input.mousePosition.y;
+
 
         Vector3 worldpos = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, camdiff));
 

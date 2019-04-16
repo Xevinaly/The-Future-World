@@ -7,6 +7,7 @@ TagManager:
   - NPC
   - AudioLog
   - Collectible
+  - SF_Door
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - 
   - PostProcessing
   - Player
-  - 
+  - door
   - 
   - 
   - 
