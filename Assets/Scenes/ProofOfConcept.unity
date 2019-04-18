@@ -1333,6 +1333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textbox: {fileID: 455945578}
+  linesOfDialogue: 5
 --- !u!1001 &1583973783
 Prefab:
   m_ObjectHideFlags: 0
