@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class CutScene1 : MonoBehaviour {
 
@@ -37,6 +39,8 @@ public class CutScene1 : MonoBehaviour {
 		}
 		if (counter == 1100){
 			GameObject.Find("SportyGirl").GetComponent<PlayerControllerCylinder>().enabled = true;
+			// SceneManager.LoadSceneAsync("ProofOfConcept_Joseph", LoadSceneMode.Additive);
+			SceneManager.UnloadSceneAsync("Mission1Cutscene");
 
 		}
 
