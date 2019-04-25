@@ -12,6 +12,7 @@ public class PlayerControllerCylinder : MonoBehaviour
     public float speed = 0.5f;
     public float PlayerHealth = 100.0f;
     public int playerDamage = 10;
+    public float mouseDeadzone = 0.2f;
     Animator anim;
 
     float angle = 0;
@@ -73,8 +74,10 @@ public class PlayerControllerCylinder : MonoBehaviour
 
 
         Vector3 worldpos = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, camdiff));
-
         Vector3 lookDirection = new Vector3(worldpos.x, transform.position.y, worldpos.z);
-        transform.LookAt(lookDirection);
+        if ((lookDirection - transform.position).magnitude > mouseDeadzone)
+        {
+            transform.LookAt(lookDirection);
+        }
     }
 }
