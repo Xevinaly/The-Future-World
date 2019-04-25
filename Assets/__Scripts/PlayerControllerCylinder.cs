@@ -15,6 +15,7 @@ public class PlayerControllerCylinder : MonoBehaviour
     public float speed = 0.5f;
     public float PlayerHealth = 100.0f;
     public int playerDamage = 10;
+    public float mouseDeadzone = 0.2f;
     Animator anim;
     public PlayerInventory inventory;
     NavMeshAgent nav;
@@ -39,10 +40,6 @@ public class PlayerControllerCylinder : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1") && equipped)
-        {
-            shoot();
-        }
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -74,32 +71,6 @@ public class PlayerControllerCylinder : MonoBehaviour
         }
     }
 
-    void shoot()
-    {
-            RaycastHit hit;
-            GetComponent<Actions>().Attack();
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
-            {
-                if (hit.collider.gameObject.CompareTag("Enemy"))
-                {
-                    if (currWeaponInt == 0){
-                        print("Enemy hit");
-                        hit.collider.GetComponent<Enemy>().EnemyHealth -= playerDamage;
-                    }
-                    else if (currWeaponInt == 1){
-                        print("Enemy stunned");
-                        hit.collider.GetComponent<Enemy>().timeStunned = 10;
-
-                    }
-                    else if (currWeaponInt == 2){
-                        print("Dart gauntlet not implemented yet");
-
-                    }
-                }
-            }
-        
-    }
-
     void Move()
     {
         float hAxis = Input.GetAxis("Horizontal");
@@ -127,9 +98,11 @@ public class PlayerControllerCylinder : MonoBehaviour
 
 
         Vector3 worldpos = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, camdiff));
-
         Vector3 lookDirection = new Vector3(worldpos.x, transform.position.y, worldpos.z);
-        transform.LookAt(lookDirection);
+        if ((lookDirection - transform.position).magnitude > mouseDeadzone)
+        {
+            transform.LookAt(lookDirection);
+        }
     }
     
     private void OnTriggerEnter(Collider other)
