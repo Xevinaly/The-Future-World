@@ -28,28 +28,13 @@ public class PlayerControllerCylinder : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            shoot();
-        }
+
     }
     // Update is called once per frame
     void FixedUpdate()
     {
         Rotate();
         Move();
-    }
-
-    void shoot()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
-        {
-            if (hit.collider.gameObject.CompareTag("Enemy"))
-            {
-                hit.collider.GetComponent<Enemy>().EnemyHealth -= playerDamage;
-            }
-        }
     }
 
     void Move()
