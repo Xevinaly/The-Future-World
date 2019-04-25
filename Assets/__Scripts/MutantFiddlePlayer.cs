@@ -7,38 +7,43 @@ public class MutantFiddlePlayer : MonoBehaviour {
     private int wasPressed = 0;
     [Header("Set in Inspector")]
     public GameObject textbox;
-	// Use this for initialization
-	void Start () {
- 
-	}
-	
-	// Update is called once per frame
+    public int linesOfDialogue;
+    
+    private int linesViewed;
+    private bool inRange;
+    
 	void FixedUpdate () {
-		if (Input.GetButtonDown("Fire1") && wasPressed != 1)
-        {
-            wasPressed++;
-        }
+	    if (Input.GetButtonDown("Fire1"))
+	    {
+	        attemptDialog();
+	    }
 	}
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (wasPressed == 1)
-        {
-            wasPressed = 2;
-            Text dialouge = textbox.GetComponent<Text>();
-            dialouge.text = "Howdy!";
-        } else if (wasPressed == 3)
-        {
-            wasPressed = 4;
-            Text dialouge = textbox.GetComponent<Text>();
-            dialouge.text = "";
-        }
+        inRange = true;
+        linesViewed = 0;
     }
-
     private void OnTriggerExit(Collider other)
     {
         Text dialouge = textbox.GetComponent<Text>();
         dialouge.text = "";
+        inRange = false;
+        linesViewed = 0;
         wasPressed = 0;
+    }
+
+    private void attemptDialog()
+    {
+        if (linesViewed < linesOfDialogue && inRange)
+        {
+            linesViewed++;
+            Text dialogue = textbox.GetComponent<Text>();
+            dialogue.text = "Howdy! " + "Line: " + linesViewed;
+        } else if (linesViewed >= linesOfDialogue)
+        {
+            Text dialogue = textbox.GetComponent<Text>();
+            dialogue.text = "";
+        }
     }
 }

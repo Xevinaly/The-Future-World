@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pauser : MonoBehaviour {
     private bool isPaused = false;
+    public PlayerInventory inventory;
 
 	// Use this for initialization
 	void Start () {
@@ -17,11 +18,23 @@ public class Pauser : MonoBehaviour {
             {
                 Time.timeScale = 1;
                 isPaused = false;
+                inventory.HideInventory();
             }
             else
             {
                 Time.timeScale = 0;
                 isPaused = true;
+                inventory.showInventory();
+                Camera.main.GetComponent<AudioSource>().Stop();
+            }
+        }
+
+        if (Input.GetKeyDown("1") && isPaused)
+        {
+            if (inventory.logs.Count > 0)
+            {
+                Camera.main.GetComponent<AudioSource>().clip = inventory.logs[0].audioClip;
+                Camera.main.GetComponent<AudioSource>().Play();
             }
         }
     }
