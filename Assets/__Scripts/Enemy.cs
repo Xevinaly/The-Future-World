@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour {
     public float shootChargeTime = 1.0f;
     public int EnemyHealth = 10;
     public int EnemyDamage = 1;
+    public int timeStunned = 0;
 
     private bool alarm;
     private int pointPatroled;
@@ -40,8 +41,10 @@ public class Enemy : MonoBehaviour {
         {
             agent.SetDestination(target);
         }
-        else
+        else if (timeStunned <= 0)
         {
+            // print("Time stunned " + timeStunned);
+            this.gameObject.transform.GetChild(1).GetComponent<Animator>().enabled = true;
             if(patrolRoute.Length != 0)
             {
                 if (Mathf.Abs((transform.position - patrolRoute[pointPatroled]).magnitude) < approximationRadius)
@@ -52,8 +55,14 @@ public class Enemy : MonoBehaviour {
                 agent.SetDestination(patrolRoute[pointPatroled]);
             }
         }
+        else{
+            print("stunned");
+            timeStunned--;
+            this.gameObject.transform.GetChild(1).GetComponent<Animator>().enabled = false;
+        }
         if(EnemyHealth <= 0)
         {
+            print("enemy destroyed from health");
             Destroy(gameObject);
         }
 	}

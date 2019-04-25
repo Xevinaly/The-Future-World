@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Soldier : MonoBehaviour {
+public class StunDemoEnemy : MonoBehaviour {
 
 	// Use this for initialization
-	void Awake () {
-
+	void Start () {
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		GetComponent<PlayerController>().SetArsenal("AK-74M");
-
+		
 	}
 }

@@ -9,7 +9,7 @@ public class PlayerControllerCylinder : MonoBehaviour
 {
     Ray cameraRay;
     RaycastHit cameraRayHit;
-    private bool equipped;
+    public bool equipped = false;
     private int equippedWait = 0;
     [Header("Set in Inspector")]
     public float speed = 0.5f;
@@ -18,6 +18,7 @@ public class PlayerControllerCylinder : MonoBehaviour
     Animator anim;
     public PlayerInventory inventory;
     NavMeshAgent nav;
+    public int currWeaponInt;
  
 
     float angle = 0;
@@ -30,7 +31,10 @@ public class PlayerControllerCylinder : MonoBehaviour
         anim = GetComponent<Animator>();
         camdiff = Camera.main.transform.position.y - transform.position.y;
         nav = GetComponent<NavMeshAgent>();
+    }
+    void Start(){
         GetComponent<PlayerController>().SetArsenal("Empty");
+
     }
 
     private void Update()
@@ -48,13 +52,24 @@ public class PlayerControllerCylinder : MonoBehaviour
         equippedWait++;
         if (Input.GetKeyDown("space") && equippedWait > 10)
         {
-            if (equipped == false){
+            if (!equipped){
                 equippedWait = 0;
-                equipPistol();
+                equipWeapon(currWeaponInt);
             }
             else{
                 equippedWait = 0;
                 unequipWeapon();
+            }
+            print(equipped);
+        }
+        else if (Input.GetKeyDown(KeyCode.Q) && equippedWait > 10){
+            equippedWait = 0;
+            if (equipped){
+                currWeaponInt++;
+                if (currWeaponInt > 2){
+                    currWeaponInt = 0;
+                }
+                equipWeapon(currWeaponInt);
             }
         }
     }
@@ -67,7 +82,19 @@ public class PlayerControllerCylinder : MonoBehaviour
             {
                 if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
-                    hit.collider.GetComponent<Enemy>().EnemyHealth -= playerDamage;
+                    if (currWeaponInt == 0){
+                        print("Enemy hit");
+                        hit.collider.GetComponent<Enemy>().EnemyHealth -= playerDamage;
+                    }
+                    else if (currWeaponInt == 1){
+                        print("Enemy stunned");
+                        hit.collider.GetComponent<Enemy>().timeStunned = 10;
+
+                    }
+                    else if (currWeaponInt == 2){
+                        print("Dart gauntlet not implemented yet");
+
+                    }
                 }
             }
         
@@ -123,9 +150,29 @@ public class PlayerControllerCylinder : MonoBehaviour
     }
 
     void equipPistol(){
-        equipped = true;
         GetComponent<PlayerController>().SetArsenal("Gun");
         GetComponent<Actions>().Aiming();
+    }
+    void equipStunGun(){
+        GetComponent<PlayerController>().SetArsenal("StunGun");
+        GetComponent<Actions>().Aiming(); 
+    }
+    void equipWristDart(){
+        GetComponent<PlayerController>().SetArsenal("WristDart");
+        GetComponent<Actions>().Aiming(); 
+    }
+
+    void equipWeapon(int index){
+        equipped = true;
+        if (index == 0){
+            equipPistol();
+        }
+        else if (index == 1){
+            equipStunGun();
+        }
+        else if (index == 2){
+            equipWristDart();
+        }
     }
     void unequipWeapon(){
         equipped = false;

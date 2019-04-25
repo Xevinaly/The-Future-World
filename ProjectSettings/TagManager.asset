@@ -10,6 +10,7 @@ TagManager:
   - SF_Door
   - Wall
   - Enemy
+  - Text
   layers:
   - Default
   - TransparentFX
