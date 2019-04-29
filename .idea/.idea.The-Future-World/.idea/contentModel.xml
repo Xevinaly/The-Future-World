@@ -14,6 +14,7 @@
           <e p="CollectibleData.cs" t="Include" />
           <e p="CutScene1.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
+          <e p="EnemyShooting.cs" t="Include" />
           <e p="FollowCam.cs" t="Include" />
           <e p="MutantFiddlePlayer.cs" t="Include" />
           <e p="NPC.cs" t="Include" />
@@ -21,6 +22,9 @@
           <e p="PlayerControllerCylinder.cs" t="Include" />
           <e p="PlayerInventory.cs" t="Include" />
           <e p="PlayerShooting.cs" t="Include" />
+          <e p="RailNode.cs" t="Include" />
+          <e p="RailSystem.cs" t="Include" />
+          <e p="TitanController.cs" t="Include" />
           <e p="Transparent.cs" t="Include" />
         </e>
         <e p="EffectExamples" t="Include">
@@ -58,6 +62,21 @@
           <e p="readme.txt" t="Include" />
           <e p="Script" t="Include">
             <e p="door.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Simple Explosion" t="Include">
+          <e p="Demo" t="Include">
+            <e p="Script (for Demo)" t="Include">
+              <e p="ExplosionControl.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Scripts" t="Include">
+            <e p="GraphicExplosion.cs" t="Include" />
+            <e p="light_control.cs" t="Include" />
+            <e p="PhysicalExplosion.cs" t="Include" />
+          </e>
+          <e p="Shader" t="Include">
+            <e p="Exposion.shader" t="Include" />
           </e>
         </e>
         <e p="Yurowm" t="Include">

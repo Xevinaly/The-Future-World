@@ -19,17 +19,6 @@ public class FollowCam : MonoBehaviour {
         distance = transform.position - POI.transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void Awake()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         if (POI == null) return;

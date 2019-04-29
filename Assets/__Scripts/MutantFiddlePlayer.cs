@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MutantFiddlePlayer : MonoBehaviour {
-    private int wasPressed = 0;
+    
     [Header("Set in Inspector")]
     public GameObject textbox;
     public int linesOfDialogue;
     
-    private int linesViewed;
-    private bool inRange;
+    public int linesViewed;
+    public bool inRange = false;
     
 	void FixedUpdate () {
 	    if (Input.GetButtonDown("Fire1"))
@@ -30,7 +30,6 @@ public class MutantFiddlePlayer : MonoBehaviour {
         dialouge.text = "";
         inRange = false;
         linesViewed = 0;
-        wasPressed = 0;
     }
 
     private void attemptDialog()
