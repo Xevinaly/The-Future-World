@@ -37,32 +37,34 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (alarm)
-        {
-            agent.SetDestination(target);
-        }
-        else if (timeStunned <= 0)
-        {
-            // print("Time stunned " + timeStunned);
+        if (timeStunned <= 0){
             this.gameObject.transform.GetChild(1).GetComponent<Animator>().enabled = true;
-            if(patrolRoute.Length != 0)
+            this.gameObject.GetComponent<NavMeshAgent>().speed = moveSpeed;
+            if (alarm)
             {
-                if (Mathf.Abs((transform.position - patrolRoute[pointPatroled]).magnitude) < approximationRadius)
+                agent.SetDestination(target);
+            }
+            else 
+            {
+                if(patrolRoute.Length != 0)
                 {
-                    pointPatroled++;
-                    pointPatroled = pointPatroled % patrolRoute.Length;
+                    if (Mathf.Abs((transform.position - patrolRoute[pointPatroled]).magnitude) < approximationRadius)
+                    {
+                        pointPatroled++;
+                        pointPatroled = pointPatroled % patrolRoute.Length;
+                    }
+                    agent.SetDestination(patrolRoute[pointPatroled]);
                 }
-                agent.SetDestination(patrolRoute[pointPatroled]);
             }
         }
-        else{
-            print("stunned");
+        else {
             timeStunned--;
             this.gameObject.transform.GetChild(1).GetComponent<Animator>().enabled = false;
+            this.gameObject.GetComponent<NavMeshAgent>().speed = 0;
         }
+
         if(EnemyHealth <= 0)
         {
-            print("enemy destroyed from health");
             Destroy(gameObject);
         }
 	}
@@ -71,6 +73,11 @@ public class Enemy : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            //  if (other.GetComponent<PlayerControllerCylinder>().currWeaponInt == 2 && Input.GetKeyDown(KeyCode.E)){
+            //     EnemyHealth -= other.GetComponent<PlayerControllerCylinder>().playerDamageCloseRange;
+            //     print("punched");
+            //  }
+
             Vector3 distance = other.transform.position - transform.position;
             string tempTag = "";
             RaycastHit hit;

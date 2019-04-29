@@ -14,7 +14,9 @@ public class PlayerControllerCylinder : MonoBehaviour
     [Header("Set in Inspector")]
     public float speed = 0.5f;
     public float PlayerHealth = 100.0f;
-    public int playerDamage = 10;
+    public int playerDamagePistol = 10;
+    public int playerDamageCloseRange = 5;
+    public int playerDamageGauntlet = 10;
     public float mouseDeadzone = 0.2f;
     Animator anim;
     public PlayerInventory inventory;
@@ -57,7 +59,6 @@ public class PlayerControllerCylinder : MonoBehaviour
                 equippedWait = 0;
                 unequipWeapon();
             }
-            print(equipped);
         }
         else if (Input.GetKeyDown(KeyCode.Q) && equippedWait > 10){
             equippedWait = 0;
@@ -68,6 +69,9 @@ public class PlayerControllerCylinder : MonoBehaviour
                 }
                 equipWeapon(currWeaponInt);
             }
+        }
+        else if (Input.GetKeyDown(KeyCode.E) && currWeaponInt == 2){
+            GetComponent<Actions>().Attack();
         }
     }
 
@@ -120,7 +124,16 @@ public class PlayerControllerCylinder : MonoBehaviour
             inventory.addCollectible(other.gameObject.GetComponent<Collectible>());
             Destroy(other.gameObject);
         }
+
     }
+    // private void OnTriggerStay(Collider other){
+    //     if (other.gameObject.CompareTag("Enemy")){
+    //         if (currWeaponInt == 2 && Input.GetKeyDown(KeyCode.E)){
+    //             other.gameObject.GetComponent<Enemy>().EnemyHealth -= playerDamageCloseRange;
+    //             print("punched");
+    //         }
+    //     }
+    // }
 
     void equipPistol(){
         GetComponent<PlayerController>().SetArsenal("Gun");

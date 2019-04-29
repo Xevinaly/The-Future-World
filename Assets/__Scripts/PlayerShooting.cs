@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour {
 
-    public int playerDamage = 10;
     public float shootInterval = 0.15f;
     public float range = 100f;
     public GameObject bulletHolePrefab;
@@ -41,8 +40,9 @@ public class PlayerShooting : MonoBehaviour {
         timer += Time.deltaTime;
         if(Input.GetButton("Fire1") && timer >= shootInterval && playerScript.equipped)
         {
-            Shoot();
+              Shoot();  
         }
+    
 
         if(timer > shootInterval * effectTime)
         {
@@ -73,13 +73,22 @@ public class PlayerShooting : MonoBehaviour {
             Enemy enemy = shootHit.collider.GetComponent<Enemy>();
             if(enemy != null)
             {
-                print("enemy damage in playershooting");
-                enemy.EnemyHealth -= playerDamage;
+
+                if (playerScript.currWeaponInt == 0){
+                    enemy.EnemyHealth -= playerScript.playerDamagePistol;
+                    GameObject.Find("PlayerCharacter").GetComponent<Actions>().Attack();
+                }
+                else if (playerScript.currWeaponInt == 1){
+                    enemy.timeStunned = 500;
+                    GameObject.Find("PlayerCharacter").GetComponent<Actions>().Attack();
+                }
+                else if (playerScript.currWeaponInt == 2){
+                    enemy.EnemyHealth -= playerScript.playerDamageGauntlet;
+                }
             }
             //This does stuff tho
             else if (shootHit.collider.CompareTag("Wall"))
             {
-                print("hit a wall");
                 Instantiate(bulletHolePrefab, shootHit.point, Quaternion.FromToRotation(Vector3.up, shootHit.normal));
             }
             gunLine.SetPosition(1, shootHit.point);

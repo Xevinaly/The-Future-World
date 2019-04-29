@@ -1513,7 +1513,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.05
-  m_Speed: 3.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1538,7 +1538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolRoute: []
-  moveSpeed: 3
+  moveSpeed: 0
   approximationRadius: 0.5
   timeAlarmed: 5
   shootTime: 2
@@ -1636,6 +1636,7 @@ GameObject:
   - component: {fileID: 137105942}
   - component: {fileID: 137105941}
   - component: {fileID: 137105940}
+  - component: {fileID: 137105944}
   m_Layer: 11
   m_Name: StandardRobot (1)
   m_TagString: Enemy
@@ -1721,6 +1722,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &137105944
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 137105939}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.05
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &154266940
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,6 +2087,17 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: -1, y: 2, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &181034897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 181034894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5be86734b61a74b95879624f730a65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &187993929
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,6 +3257,12 @@ Prefab:
       propertyPath: equipped
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114410917212054850, guid: 7c7885317c5e77d4f9703873a3c7caaa,
+        type: 2}
+      propertyPath: arsenal.Array.data[3].leftGun
+      value: 
+      objectReference: {fileID: 1576814242272140, guid: 1279e96465eb79c42b04e8abd4f8f6aa,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 54438118758626086, guid: 7c7885317c5e77d4f9703873a3c7caaa, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7c7885317c5e77d4f9703873a3c7caaa, type: 2}
@@ -3726,7 +3757,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.05
-  m_Speed: 3.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -3751,7 +3782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolRoute: []
-  moveSpeed: 3
+  moveSpeed: 0
   approximationRadius: 0.5
   timeAlarmed: 5
   shootTime: 2
@@ -4395,7 +4426,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.05
-  m_Speed: 3.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -4420,7 +4451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolRoute: []
-  moveSpeed: 3
+  moveSpeed: 0
   approximationRadius: 0.5
   timeAlarmed: 5
   shootTime: 2
@@ -5275,6 +5306,7 @@ GameObject:
   - component: {fileID: 535381350}
   - component: {fileID: 535381349}
   - component: {fileID: 535381348}
+  - component: {fileID: 535381347}
   m_Layer: 11
   m_Name: StandardRobot
   m_TagString: Enemy
@@ -5282,6 +5314,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!136 &535381347
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 535381346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.05
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &535381348
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5623,7 +5668,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.05
-  m_Speed: 3.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -5648,7 +5693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolRoute: []
-  moveSpeed: 3
+  moveSpeed: 0
   approximationRadius: 0.5
   timeAlarmed: 5
   shootTime: 2
@@ -6220,7 +6265,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.05
-  m_Speed: 3.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -6245,7 +6290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolRoute: []
-  moveSpeed: 3
+  moveSpeed: 0
   approximationRadius: 0.5
   timeAlarmed: 5
   shootTime: 2
@@ -7804,6 +7849,7 @@ GameObject:
   - component: {fileID: 859228836}
   - component: {fileID: 859228835}
   - component: {fileID: 859228834}
+  - component: {fileID: 859228837}
   m_Layer: 11
   m_Name: botBody
   m_TagString: Untagged
@@ -7889,6 +7935,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 859228832}
   m_Mesh: {fileID: 4300004, guid: 41ac1ec912b4d41d6a96f0c2414a90b9, type: 3}
+--- !u!111 &859228837
+Animation:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 859228832}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 3ad49ebebf06b4c59bba60173d592654, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &863770106
 GameObject:
   m_ObjectHideFlags: 0
@@ -8096,7 +8156,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.05
-  m_Speed: 3.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -8121,7 +8181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolRoute: []
-  moveSpeed: 3
+  moveSpeed: 0
   approximationRadius: 0.5
   timeAlarmed: 5
   shootTime: 2
@@ -13149,7 +13209,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.05
-  m_Speed: 3.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -13174,7 +13234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolRoute: []
-  moveSpeed: 3
+  moveSpeed: 0
   approximationRadius: 0.5
   timeAlarmed: 5
   shootTime: 2
@@ -14874,7 +14934,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.05
-  m_Speed: 3.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -14899,7 +14959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   patrolRoute: []
-  moveSpeed: 3
+  moveSpeed: 0
   approximationRadius: 0.5
   timeAlarmed: 5
   shootTime: 2
