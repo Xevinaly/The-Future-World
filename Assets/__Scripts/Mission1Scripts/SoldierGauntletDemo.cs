@@ -7,52 +7,74 @@ public class SoldierGauntletDemo : MonoBehaviour {
 	private int counter = 0;
 	private Actions actions ;
 	private Quaternion originalRotation;
+	private Mission1DialogScript dialog;
+
+	bool waitingForClick; 
 	// Use this for initialization
 	void Awake () {
 		actions = GetComponent<Actions>();
 		originalRotation = transform.rotation;
+		dialog = GameObject.Find("PlayerCharacter").GetComponent<Mission1DialogScript>();
+
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		GetComponent<PlayerController>().SetArsenal("Gauntlet");
-		if (playerEntered){
+		if (playerEntered && !waitingForClick){
+			if (counter == 0){
+				dialog.changeDialog("Ranger: I'll make this quick, so pay attention.  You've been given a Dart Gauntlet like I have. You have two options with it. Option one, melee attack -");
+				waitingForClick = true;
+			}
 			counter++;
-			if (counter <= 35){
+			if (counter <= 35 && counter > 1){
 				actions.Walk();
 				Rotate();
 			}
-			else if (counter <= 120){
+			else if (counter <= 120 && counter > 1){
 				actions.Walk();
 				Move();
 			}
 			else if (counter == 125){
 				actions.Aiming();
 				actions.Attack();
+				dialog.changeDialog("Ranger: - or option two, a long-range attack");
+				waitingForClick = true;
 			}			
-			else if (counter == 150){
-				actions.Attack();
-			}
+	
 			else if (counter == 175){
 				Destroy(GameObject.Find("StandardRobot (20)"));
 			}
-			else if (counter == 225){
-				Destroy(GameObject.Find("StandardRobot (16)"));
-				GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = true;
-
+			else if (counter == 200){
+				actions.Attack();
 			}
-			// if (counter > 30){
-			// 	actions.Aiming();
-			// }
-			// if (counter == 40){
-			// 	actions.Attack();
-			// }
-			// if (counter == 70){
-			// 	GameObject.Find("StandardRobot (9)").GetComponent<Enemy>().timeStunned = 100;
-			// 	GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = true;
-			// 	actions.Stay();
-			// }
-			
+			else if (counter == 250){
+				Destroy(GameObject.Find("StandardRobot (16)"));
+				dialog.changeDialog("Ranger: Destroy three robots with each method and you'll pass");
+				waitingForClick = true;
+			}
+			else if (counter == 260){
+				dialog.changeDialog("Click to use the gauntlet's long range attack, and press 'e' to use the short range attack");
+				waitingForClick = true;
+			}
+			else if (counter == 270){
+			GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = true;
+			}
+			bool flag = false;
+			for (int i = 13; i < 21; i++){
+				if (GameObject.Find("StandardRobot ("+ i + ")") != null){
+					flag = true;
+				}
+			}
+			if (!flag){
+				dialog.changeDialog("Percy: Good work. Now to put that training to the test.  You'll be deployed at 0600 hours");
+			}
+	
+		}
+		else if (playerEntered && waitingForClick){
+			if (Input.GetButton("Fire1")){
+				waitingForClick = false;
+			}
 		}
 	}
 	private void OnTriggerEnter(Collider other)

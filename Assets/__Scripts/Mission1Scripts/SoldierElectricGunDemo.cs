@@ -8,18 +8,30 @@ public class SoldierElectricGunDemo : MonoBehaviour {
 	private int counter = 0;
 	private Actions actions ;
 	private Quaternion originalRotation;
+	private Mission1DialogScript dialog;
+	private bool waitingForClick = false;
 	// Use this for initialization
 	void Awake () {
 		actions = GetComponent<Actions>();
 		originalRotation = transform.rotation;
+		dialog = GameObject.Find("PlayerCharacter").GetComponent<Mission1DialogScript>();
+
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		GetComponent<PlayerController>().SetArsenal("StunGun");
-		if (playerEntered){
+		if (playerEntered && !waitingForClick){
+			if (counter == 0){
+				dialog.changeDialog("Electrician: When the war first started, a couple of scientists thought it would be possible to short out the machines' circuits with a jolt of electricity.  It worked for a while, but then the robots upgraded.  ");
+				waitingForClick = true;
+			}
+			if (counter == 1){
+				dialog.changeDialog("Electrician: While it's no longer a permanent way to keep 'em down, the stun gun still has some practical uses.  One blast should stun most robots for at least a few seconds.  ");
+				waitingForClick = true;
+			}
 			counter++;
-			if (counter <= 30){
+			if (counter <= 30 && counter > 2){
 				actions.Walk();
 				Rotate();
 			}
@@ -31,10 +43,25 @@ public class SoldierElectricGunDemo : MonoBehaviour {
 			}
 			if (counter == 70){
 				GameObject.Find("StandardRobot (9)").GetComponent<Enemy>().timeStunned = 100;
-				GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = true;
 				actions.Stay();
+				dialog.changeDialog("Electrician: Try to stun the other 3 scrap heaps.  Once you do, move on to the final test.");
+				waitingForClick = true;
+			}
+			if (counter == 80){
+				dialog.changeDialog("Once you've equipped your gun, press 'q' to rotate between weapons.");
+				waitingForClick = true;
+			}
+			if (counter == 90){
+				dialog.clearDialog();
+				GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = true;
 			}
 			
+			
+		}
+		else if (playerEntered && waitingForClick){
+			if (Input.GetButton("Fire1")){
+				waitingForClick = false;
+			}
 		}
 	}
 	private void OnTriggerEnter(Collider other)

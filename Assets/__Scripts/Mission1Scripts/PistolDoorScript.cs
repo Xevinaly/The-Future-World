@@ -21,6 +21,7 @@ public class PistolDoorScript : MonoBehaviour {
 			GameObject thedoor= GameObject.Find("door");
 			thedoor.GetComponent<Animation>().Play("open");
 			GetComponent<UnityEngine.AI.NavMeshObstacle>().enabled = false;
+			GameObject.Find("PlayerCharacter").GetComponent<Mission1DialogScript>().clearDialog();
 		}
 	}
 }

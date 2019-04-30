@@ -9,6 +9,9 @@ public class Mission1DialogScript : MonoBehaviour {
     public GameObject textbox;
 
     Text dialogue;
+    bool passedSimpleSneak = false;
+    bool passedComplexSneak = false;
+   int dialogClicks = 0;
 
     
     
@@ -18,8 +21,42 @@ public class Mission1DialogScript : MonoBehaviour {
     }
     
     public void Update(){
-        if (this.transform.x <= 230){
+        if (transform.position.x <= 230 && !passedSimpleSneak){
             postSimpleSneakDialog();
+            passedSimpleSneak = true;
+            GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = false;
+            GameObject.Find("PlayerCharacter").GetComponent<Actions>().Stay();
+             GameObject.Find("StandardRobot").GetComponent<Enemy>().enabled = false;
+
+        }
+        else if (Input.GetButton("Fire1") && dialogClicks == 0 && !passedComplexSneak){
+            GameObject.Find("StandardRobot (1)").GetComponent<Enemy>().enabled = false;
+            preComplexSneakDialog();
+            dialogClicks++;
+        }
+        else if (Input.GetButton("Fire1") && dialogClicks == 1 && !passedComplexSneak){
+            preComplexSneakDialog();
+            dialogClicks++;
+        }
+        else if (Input.GetButton("Fire1") && dialogClicks == 2 && !passedComplexSneak){
+            clearDialog();
+            dialogClicks++;
+            GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = true;
+            GameObject.Find("StandardRobot (1)").GetComponent<Enemy>().enabled = true;
+
+        }
+
+        else if (transform.position.x < 160 && !passedComplexSneak){
+            postComplexSneakDialog();
+            passedComplexSneak = true;
+            GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = false;
+            GameObject.Find("PlayerCharacter").GetComponent<Actions>().Stay();
+        }
+        else if (Input.GetButton("Fire1") && dialogClicks == 3 && passedComplexSneak){
+            clearDialog();
+            dialogClicks++;
+            GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = true;
+
         }
     }
 
@@ -36,7 +73,7 @@ public class Mission1DialogScript : MonoBehaviour {
     }
 
     public void postSimpleSneakDialog(){
-        dialogue.text = "Katya: How could anyone fail to get past that? \n Percy: I've been suprised before.";
+        dialogue.text = "Katya: How could anyone fail to get past that? \nPercy: I've been suprised before.";
     }
 
     public void preComplexSneakDialog(){
@@ -44,6 +81,9 @@ public class Mission1DialogScript : MonoBehaviour {
     }
     public void postComplexSneakDialog(){
         dialogue.text = "Very good. Next is weapons training. I’ll let the instructors take it from here.";
+    }
+    public void changeDialog(string text){
+        dialogue.text = text;
     }
 
 }
