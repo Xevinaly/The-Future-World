@@ -38,7 +38,6 @@ public class Enemy : MonoBehaviour {
         {
             agent = gameObject.AddComponent<NavMeshAgent>();
         }
-        agent.updateRotation = false;
         agent.speed = moveSpeed;
 	}
 	
@@ -72,7 +71,7 @@ public class Enemy : MonoBehaviour {
 
         if (alarm)
         {
-            transform.GetComponentInParent<Transform>().LookAt(target);
+            transform.LookAt(target);
         }
 
         if(EnemyHealth <= 0)
