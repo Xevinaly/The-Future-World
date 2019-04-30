@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour {
     public int EnemyHealth = 10;
     public int EnemyDamage = 1;
     public int timeStunned = 0;
+    public bool canShoot = false;
 
     private bool alarm;
     private int pointPatroled;
@@ -22,12 +23,17 @@ public class Enemy : MonoBehaviour {
     private float alarmTime;
     private float timeToShoot;
     private float chargeTime;
+    private EnemyShooting shooting;
 	// Use this for initialization
 	void Start () {
         alarm = false;
         pointPatroled = 0;
         agent = GetComponent<NavMeshAgent>();
         timeReset();
+        if (canShoot)
+        {
+            shooting = transform.Find("EnemyShootPoint").GetComponent<EnemyShooting>();
+        }
         if(agent == null)
         {
             agent = gameObject.AddComponent<NavMeshAgent>();
@@ -63,6 +69,11 @@ public class Enemy : MonoBehaviour {
             this.gameObject.GetComponent<NavMeshAgent>().speed = 0;
         }
 
+        if (alarm)
+        {
+            transform.LookAt(target);
+        }
+
         if(EnemyHealth <= 0)
         {
             Destroy(gameObject);
@@ -90,6 +101,7 @@ public class Enemy : MonoBehaviour {
                 alarm = true;
                 alarmTime = 0.0f;
                 target = other.transform.position;
+                transform.LookAt(target);
                 timeToShoot += Time.deltaTime;
                 if (timeToShoot >= shootTime)
                 {
@@ -97,7 +109,10 @@ public class Enemy : MonoBehaviour {
                     chargeTime += Time.deltaTime;
                     if(chargeTime >= shootChargeTime)
                     {
-                        shoot(other.transform.position);
+                        if(shooting != null)
+                        {
+                            shooting.Shoot(other.transform.position + new Vector3(0, 0.5f, 0));
+                        }
                         timeReset();
                         agent.isStopped = false;
                     }
@@ -122,15 +137,15 @@ public class Enemy : MonoBehaviour {
         chargeTime = 0.0f;
     }
 
-    public void shoot(Vector3 target)
-    {
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, target - transform.position, out hit))
-        {
-            if (hit.collider.gameObject.CompareTag("Player"))
-            {
-                hit.collider.gameObject.GetComponent<PlayerControllerCylinder>().PlayerHealth -= EnemyDamage;
-            }
-        }
-    }
+    //public void shoot(Vector3 target)
+    //{
+    //    RaycastHit hit;
+    //    if(Physics.Raycast(transform.position, target - transform.position, out hit))
+    //    {
+    //        if (hit.collider.gameObject.CompareTag("Player"))
+    //        {
+    //            hit.collider.gameObject.GetComponent<PlayerControllerCylinder>().PlayerHealth -= EnemyDamage;
+    //        }
+    //    }
+    //}
 }
