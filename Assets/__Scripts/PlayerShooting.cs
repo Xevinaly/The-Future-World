@@ -42,6 +42,9 @@ public class PlayerShooting : MonoBehaviour {
         {
               Shoot();  
         }
+        else if(Input.GetKeyDown(KeyCode.E) && timer >= shootInterval && playerScript.equipped && playerScript.currWeaponInt == 2){
+            Punch();
+        }
     
 
         if(timer > shootInterval * effectTime)
@@ -91,6 +94,33 @@ public class PlayerShooting : MonoBehaviour {
             {
                 Instantiate(bulletHolePrefab, shootHit.point, Quaternion.FromToRotation(Vector3.up, shootHit.normal));
             }
+            gunLine.SetPosition(1, shootHit.point);
+        }
+        else
+        {
+            gunLine.SetPosition(1, shootRay.origin + shootRay.direction * range);
+        }
+    }
+    private void Punch()
+    {
+        timer = 0f;
+        gunLight.enabled = false;
+        // gunParticles.Stop();
+        // gunParticles.Play();
+        // gunLine.enabled = true;
+        // gunLine.SetPosition(0, transform.position);
+        shootRay.origin = transform.position;
+        shootRay.direction = transform.TransformDirection(Vector3.forward);
+
+        if(Physics.Raycast(shootRay, out shootHit, 4f, shootableMask))
+        {
+            Enemy enemy = shootHit.collider.GetComponent<Enemy>();
+            if(enemy != null)
+            {
+                enemy.EnemyHealth -= playerScript.playerDamageCloseRange;
+                
+            }
+          
             gunLine.SetPosition(1, shootHit.point);
         }
         else
