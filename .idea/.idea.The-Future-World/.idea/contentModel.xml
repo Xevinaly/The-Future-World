@@ -4,6 +4,7 @@
     <e p="C:\Users\stensrje\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_The-Future-World.1430093445.00" t="ExcludeRecursive" />
     <e p="C:\Users\stensrje\Desktop\dev\Unity Projects\The-Future-World" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="__Scripts" t="Include">
@@ -16,6 +17,15 @@
           <e p="Enemy.cs" t="Include" />
           <e p="EnemyShooting.cs" t="Include" />
           <e p="FollowCam.cs" t="Include" />
+          <e p="LoadScene.cs" t="Include" />
+          <e p="Mission1Scripts" t="Include">
+            <e p="ElectrictyGunDoorScript.cs" t="Include" />
+            <e p="Mission1DialogScript1.cs" t="Include" />
+            <e p="PistolDoorScript.cs" t="Include" />
+            <e p="SoldierElectricGunDemo.cs" t="Include" />
+            <e p="SoldierPistolDemo.cs" t="Include" />
+            <e p="StunDemoEnemy.cs" t="Include" />
+          </e>
           <e p="MutantFiddlePlayer.cs" t="Include" />
           <e p="NPC.cs" t="Include" />
           <e p="Pauser.cs" t="Include" />
@@ -28,6 +38,11 @@
           <e p="Transparent.cs" t="Include" />
         </e>
         <e p="EffectExamples" t="Include">
+          <e p="Editor" t="Include">
+            <e p="PackageManagerAssembly" t="Include">
+              <e p="PackageImportList.txt" t="Include" />
+            </e>
+          </e>
           <e p="Shared" t="Include">
             <e p="Scripts" t="Include">
               <e p="DecalDestroyer.cs" t="Include" />
@@ -78,6 +93,55 @@
           <e p="Shader" t="Include">
             <e p="Exposion.shader" t="Include" />
           </e>
+        </e>
+        <e p="VIDE" t="Include">
+          <e p="Data" t="Include">
+            <e p="Editor" t="Include">
+              <e p="VDE.cs" t="Include" />
+              <e p="VIDE_AssignC.cs" t="Include" />
+              <e p="VIDE_Editor.cs" t="Include" />
+            </e>
+            <e p="MiniJSON_VIDE.cs" t="Include" />
+            <e p="VIDE_Data.cs" t="Include" />
+            <e p="VIDE_Editor_Skin.cs" t="Include" />
+            <e p="VIDE_EditorDB.cs" t="Include" />
+            <e p="VIDE_Localization.cs" t="Include" />
+          </e>
+          <e p="Demos" t="Include">
+            <e p="About.txt" t="Include" />
+            <e p="Localization" t="Include">
+              <e p="readme.txt" t="Include" />
+              <e p="VIDEUIManager2.cs" t="Include" />
+            </e>
+            <e p="MultiInstances" t="Include">
+              <e p="readme.txt" t="Include" />
+              <e p="VIDEUIManager3.cs" t="Include" />
+            </e>
+            <e p="Narration" t="Include">
+              <e p="DEMO_UIManager.cs" t="Include" />
+            </e>
+            <e p="PlayerInteraction" t="Include">
+              <e p="demoScripts" t="Include">
+                <e p="CylinderGuy.cs" t="Include" />
+                <e p="QuestChartDemo.cs" t="Include" />
+                <e p="VIDEDemoPlayer.cs" t="Include" />
+                <e p="VIDEUIManager1.cs" t="Include" />
+                <e p="witchExample.cs" t="Include" />
+              </e>
+              <e p="readme.txt" t="Include" />
+            </e>
+            <e p="Template" t="Include">
+              <e p="Template_UIManager.cs" t="Include" />
+            </e>
+            <e p="VeryBasic" t="Include">
+              <e p="minUIExample.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Export" t="Include">
+            <e p="readme.txt" t="Include" />
+          </e>
+          <e p="readme.txt" t="Include" />
+          <e p="VIDE_Assign.cs" t="Include" />
         </e>
         <e p="Yurowm" t="Include">
           <e p="Demo" t="Include">
