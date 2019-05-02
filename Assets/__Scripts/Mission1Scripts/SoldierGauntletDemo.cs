@@ -10,7 +10,10 @@ public class SoldierGauntletDemo : MonoBehaviour {
 	private Mission1DialogScript dialog;
 
 	bool waitingForClick; 
-	// Use this for initialization
+
+    [Header("Set in Inspector")]
+			public GameObject demoCamera;
+
 	void Awake () {
 		actions = GetComponent<Actions>();
 		originalRotation = transform.rotation;
@@ -23,6 +26,7 @@ public class SoldierGauntletDemo : MonoBehaviour {
 		GetComponent<PlayerController>().SetArsenal("Gauntlet");
 		if (playerEntered && !waitingForClick){
 			if (counter == 0){
+				demoCamera.SetActive(true);
 				dialog.changeDialog("Ranger: I'll make this quick, so pay attention.  You've been given a Dart Gauntlet like I have. You have two options with it. Option one, melee attack -");
 				waitingForClick = true;
 			}
@@ -38,13 +42,19 @@ public class SoldierGauntletDemo : MonoBehaviour {
 			else if (counter == 125){
 				actions.Aiming();
 				actions.Attack();
-				dialog.changeDialog("Ranger: - or option two, a long-range attack");
-				waitingForClick = true;
-			}			
 	
-			else if (counter == 175){
+			}			
+
+			else if (counter == 150){
 				Destroy(GameObject.Find("StandardRobot (20)"));
-			}
+				waitingForClick = true;
+
+		}
+		else if (counter == 170){
+					dialog.changeDialog("Ranger: - or option two, a long-range attack");
+
+		}
+
 			else if (counter == 200){
 				actions.Attack();
 			}
@@ -54,6 +64,7 @@ public class SoldierGauntletDemo : MonoBehaviour {
 				waitingForClick = true;
 			}
 			else if (counter == 260){
+								demoCamera.SetActive(false);
 				dialog.changeDialog("Click to use the gauntlet's long range attack, and press 'e' to use the short range attack");
 				waitingForClick = true;
 			}

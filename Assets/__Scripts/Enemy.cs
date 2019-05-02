@@ -137,15 +137,5 @@ public class Enemy : MonoBehaviour {
         chargeTime = 0.0f;
     }
 
-    //public void shoot(Vector3 target)
-    //{
-    //    RaycastHit hit;
-    //    if(Physics.Raycast(transform.position, target - transform.position, out hit))
-    //    {
-    //        if (hit.collider.gameObject.CompareTag("Player"))
-    //        {
-    //            hit.collider.gameObject.GetComponent<PlayerControllerCylinder>().PlayerHealth -= EnemyDamage;
-    //        }
-    //    }
-    //}
+    
 }
