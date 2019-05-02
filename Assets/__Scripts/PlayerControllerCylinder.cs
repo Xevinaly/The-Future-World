@@ -79,9 +79,10 @@ public class PlayerControllerCylinder : MonoBehaviour
     {
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
-        Vector3 pos = new Vector3(-hAxis, 0, -vAxis);
-        pos = pos * speed;
-        pos = (transform.rotation * Quaternion.Euler(0, 180, 0)) * pos;
+        Vector3 horizontal = new Vector3(-1, 0, 1).normalized * hAxis;
+        Vector3 vertical = new Vector3(-1, 0, -1).normalized * vAxis;
+        Vector3 pos = horizontal + vertical;
+        pos = pos.normalized * speed;
         if (hAxis != 0 || vAxis != 0){
             anim.SetFloat("Speed", speed);
         }
