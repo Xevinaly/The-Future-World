@@ -449,8 +449,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1758739028622986, guid: 28f1b1baaa1b17545931addc3140d5aa, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114124138608279448, guid: 28f1b1baaa1b17545931addc3140d5aa,
+        type: 2}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 1000010608846784, guid: 6747b1742d70743a8aff8594e708b2f7,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28f1b1baaa1b17545931addc3140d5aa, type: 2}
   m_IsPrefabParent: 0

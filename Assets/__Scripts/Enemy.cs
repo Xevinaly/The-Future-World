@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour {
     public int timeStunned = 0;
     public bool canShoot = false;
 
-    private bool alarm;
+    public bool alarm;
     private int pointPatroled;
     private Vector3 target;
     private NavMeshAgent agent;
@@ -88,6 +88,8 @@ public class Enemy : MonoBehaviour {
             //     EnemyHealth -= other.GetComponent<PlayerControllerCylinder>().playerDamageCloseRange;
             //     print("punched");
             //  }
+            target = other.transform.position;
+            transform.LookAt(target);
 
             Vector3 distance = other.transform.position - transform.position;
             string tempTag = "";
@@ -100,8 +102,6 @@ public class Enemy : MonoBehaviour {
             {
                 alarm = true;
                 alarmTime = 0.0f;
-                target = other.transform.position;
-                transform.LookAt(target);
                 timeToShoot += Time.deltaTime;
                 if (timeToShoot >= shootTime)
                 {

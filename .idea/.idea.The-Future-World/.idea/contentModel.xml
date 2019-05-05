@@ -20,9 +20,11 @@
           <e p="LoadScene.cs" t="Include" />
           <e p="Mission1Scripts" t="Include">
             <e p="ElectrictyGunDoorScript.cs" t="Include" />
+            <e p="Mission1DialogScript.cs" t="Include" />
             <e p="Mission1DialogScript1.cs" t="Include" />
             <e p="PistolDoorScript.cs" t="Include" />
             <e p="SoldierElectricGunDemo.cs" t="Include" />
+            <e p="SoldierGauntletDemo.cs" t="Include" />
             <e p="SoldierPistolDemo.cs" t="Include" />
             <e p="StunDemoEnemy.cs" t="Include" />
           </e>
@@ -34,6 +36,7 @@
           <e p="PlayerShooting.cs" t="Include" />
           <e p="RailNode.cs" t="Include" />
           <e p="RailSystem.cs" t="Include" />
+          <e p="SecurityEnemy.cs" t="Include" />
           <e p="TitanController.cs" t="Include" />
           <e p="Transparent.cs" t="Include" />
         </e>
@@ -92,6 +95,13 @@
           </e>
           <e p="Shader" t="Include">
             <e p="Exposion.shader" t="Include" />
+          </e>
+        </e>
+        <e p="ToonBot" t="Include">
+          <e p="ToonBot(Free) Assets" t="Include">
+            <e p="Controller" t="Include">
+              <e p="RobotTestScriptFree.cs" t="Include" />
+            </e>
           </e>
         </e>
         <e p="VIDE" t="Include">
