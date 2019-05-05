@@ -74,6 +74,7 @@ public class PlayerShooting : MonoBehaviour {
         if(Physics.Raycast(shootRay, out shootHit, range, shootableMask))
         {
             Enemy enemy = shootHit.collider.GetComponent<Enemy>();
+            SecurityEnemy securityEnemy = shootHit.collider.GetComponent<SecurityEnemy>();
             if(enemy != null)
             {
 
@@ -87,6 +88,19 @@ public class PlayerShooting : MonoBehaviour {
                 }
                 else if (playerScript.currWeaponInt == 2){
                     enemy.EnemyHealth -= playerScript.playerDamageGauntlet;
+                }
+            }
+            else if (securityEnemy != null){
+                if (playerScript.currWeaponInt == 0){
+                    securityEnemy.EnemyHealth -= playerScript.playerDamagePistol;
+                    GameObject.Find("PlayerCharacter").GetComponent<Actions>().Attack();
+                }
+                else if (playerScript.currWeaponInt == 1){
+                    securityEnemy.timeStunned = 500;
+                    GameObject.Find("PlayerCharacter").GetComponent<Actions>().Attack();
+                }
+                else if (playerScript.currWeaponInt == 2){
+                    securityEnemy.EnemyHealth -= playerScript.playerDamageGauntlet;
                 }
             }
             //This does stuff tho

@@ -22,6 +22,8 @@ public class PlayerControllerCylinder : MonoBehaviour
     public PlayerInventory inventory;
     NavMeshAgent nav;
     public int currWeaponInt;
+    public Vector3 directionFixHorizonal;
+    public Vector3 directionFixVertical;
  
 
     float angle = 0;
@@ -79,8 +81,8 @@ public class PlayerControllerCylinder : MonoBehaviour
     {
         float hAxis = Input.GetAxis("Horizontal");
         float vAxis = Input.GetAxis("Vertical");
-        Vector3 horizontal = new Vector3(-1, 0, 1).normalized * hAxis;
-        Vector3 vertical = new Vector3(-1, 0, -1).normalized * vAxis;
+        Vector3 horizontal = directionFixHorizonal * hAxis;
+        Vector3 vertical = directionFixVertical * vAxis;
         Vector3 pos = horizontal + vertical;
         pos = pos.normalized * speed;
         if (hAxis != 0 || vAxis != 0){
