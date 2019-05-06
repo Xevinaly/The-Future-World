@@ -28,6 +28,10 @@
             <e p="SoldierPistolDemo.cs" t="Include" />
             <e p="StunDemoEnemy.cs" t="Include" />
           </e>
+          <e p="Mission2Scripts" t="Include">
+            <e p="Mission2ConsoleDialog.cs" t="Include" />
+            <e p="TitanActivator.cs" t="Include" />
+          </e>
           <e p="MutantFiddlePlayer.cs" t="Include" />
           <e p="NPC.cs" t="Include" />
           <e p="Pauser.cs" t="Include" />
@@ -60,6 +64,9 @@
               <e p="SurfaceShader_VC.shader" t="Include" />
             </e>
           </e>
+        </e>
+        <e p="Machine Shop Equipment" t="Include">
+          <e p="readme.txt" t="Include" />
         </e>
         <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
