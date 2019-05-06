@@ -3,14 +3,31 @@ using System.Collections;
 
 public class door : MonoBehaviour {
 	GameObject thedoor;
+	bool open;
+	bool close;
 
-void OnTriggerEnter ( Collider obj  ){
+void Start(){
 	thedoor= GameObject.FindWithTag("SF_Door");
-	thedoor.GetComponent<Animation>().Play("open");
+}
+void FixedUpdate(){
+	if (open && !thedoor.GetComponent<Animation>().IsPlaying("close")){
+		thedoor.GetComponent<Animation>().Play("open");
+		open = false;
+	}
+	else if (close && !thedoor.GetComponent<Animation>().IsPlaying("open")){
+		thedoor.GetComponent<Animation>().Play("close");
+		close = false;
+	}
+}
+void OnTriggerEnter ( Collider obj  ){
+	if (obj.gameObject.CompareTag("Player")){
+		open = true;
+	}
 }
 
 void OnTriggerExit ( Collider obj  ){
-	thedoor= GameObject.FindWithTag("SF_Door");
-	thedoor.GetComponent<Animation>().Play("close");
+	if (obj.gameObject.CompareTag("Player")){
+		close = true;
+	}
 }
 }

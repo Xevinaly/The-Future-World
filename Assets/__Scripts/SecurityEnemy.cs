@@ -24,8 +24,10 @@ public class SecurityEnemy : MonoBehaviour {
     private float timeToShoot;
     private float chargeTime;
     private EnemyShooting shooting;
+    private Animator animator;
 	// Use this for initialization
 	void Start () {
+        animator = GetComponent<Animator>();
         alarm = false;
         pointPatroled = 0;
         agent = GetComponent<NavMeshAgent>();
@@ -44,7 +46,8 @@ public class SecurityEnemy : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (timeStunned <= 0){
-            GetComponent<Animator>().enabled = true;
+            animator.enabled = true;
+            animator.SetInteger("Speed",1);
             this.gameObject.GetComponent<NavMeshAgent>().speed = moveSpeed;
             if (alarm)
             {
@@ -65,7 +68,8 @@ public class SecurityEnemy : MonoBehaviour {
         }
         else {
             timeStunned--;
-            GetComponent<Animator>().enabled = false;
+            animator.SetInteger("Speed",0);
+            animator.enabled = false;
             this.gameObject.GetComponent<NavMeshAgent>().speed = 0;
         }
 
@@ -82,12 +86,8 @@ public class SecurityEnemy : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && timeStunned <= 0)
         {
-            //  if (other.GetComponent<PlayerControllerCylinder>().currWeaponInt == 2 && Input.GetKeyDown(KeyCode.E)){
-            //     EnemyHealth -= other.GetComponent<PlayerControllerCylinder>().playerDamageCloseRange;
-            //     print("punched");
-            //  }
 
             Vector3 distance = other.transform.position - transform.position;
             string tempTag = "";

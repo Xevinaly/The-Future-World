@@ -103,6 +103,8 @@ public class PlayerControllerCylinder : MonoBehaviour
 
         float mouseY = Input.mousePosition.y;
 
+        // float mouseX = Input.GetAxis("Horizontal");
+        // float mouseY = Input.GetAxis("Vertical");
 
         Vector3 worldpos = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, camdiff));
         Vector3 lookDirection = new Vector3(worldpos.x, transform.position.y, worldpos.z);
