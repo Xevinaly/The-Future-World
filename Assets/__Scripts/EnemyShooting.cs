@@ -79,7 +79,6 @@ public class EnemyShooting : MonoBehaviour {
             else if (shootHit.collider.CompareTag("Wall"))
             {
                 Instantiate(bulletHolePrefab, shootHit.point, Quaternion.FromToRotation(Vector3.up, shootHit.normal));
-                print("wall");
             }
             gunLine.SetPosition(1, target);
         }
