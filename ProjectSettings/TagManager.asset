@@ -11,6 +11,7 @@ TagManager:
   - Wall
   - Enemy
   - Text
+  - Door1
   layers:
   - Default
   - TransparentFX
