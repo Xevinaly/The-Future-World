@@ -86,7 +86,7 @@ public class PlayerControllerCylinder : MonoBehaviour
         Vector3 pos = horizontal + vertical;
         pos = pos.normalized * speed;
         if (hAxis != 0 || vAxis != 0){
-            anim.SetFloat("Speed", speed);
+            anim.SetFloat("Speed", 0.5f);
         }
         else{
             anim.SetFloat("Speed", 0);

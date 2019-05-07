@@ -3632,6 +3632,16 @@ Prefab:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 66580016}
+    - target: {fileID: 114021963080386424, guid: 7c7885317c5e77d4f9703873a3c7caaa,
+        type: 2}
+      propertyPath: directionFixHorizonal.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114021963080386424, guid: 7c7885317c5e77d4f9703873a3c7caaa,
+        type: 2}
+      propertyPath: directionFixVertical.x
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 54438118758626086, guid: 7c7885317c5e77d4f9703873a3c7caaa, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7c7885317c5e77d4f9703873a3c7caaa, type: 2}
