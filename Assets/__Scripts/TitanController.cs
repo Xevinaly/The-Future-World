@@ -54,7 +54,7 @@ public class TitanController : MonoBehaviour
 			{
 				if (hit.collider.gameObject.CompareTag("Player"))
 				{
-					startShot();
+					StartShot();
 				}
 			}
 		} else if (timer >= shootEndTimer)
@@ -108,11 +108,16 @@ public class TitanController : MonoBehaviour
 			{
 				player.PlayerHealth -= EnemyDamage;
 			}
+			else
+			{
+				gunLine.SetPosition(1, hit.transform.position);
+				return;
+			}
 		}
 		gunLine.SetPosition(1, target);
 	}
 
-	public void startShot()
+	void StartShot()
 	{
 		isChargingShot = true;
 		gunStartup.Play();
