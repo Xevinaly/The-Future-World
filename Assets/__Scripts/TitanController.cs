@@ -12,6 +12,7 @@ public class TitanController : MonoBehaviour
 	public float shootTimer = 8f;
 	public float shootEndTimer = 9f;
 	public float speed = 0.1f;
+	public float health = 1600f;
 	private float timer = 0f;
 	private bool isAtNode = true;
 	public RailNode currentTarget;

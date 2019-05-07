@@ -75,6 +75,7 @@ public class PlayerShooting : MonoBehaviour {
         {
             Enemy enemy = shootHit.collider.GetComponent<Enemy>();
             SecurityEnemy securityEnemy = shootHit.collider.GetComponent<SecurityEnemy>();
+            TitanController titanEnemy = shootHit.collider.GetComponent<TitanController>();
             if(enemy != null)
             {
 
@@ -101,6 +102,13 @@ public class PlayerShooting : MonoBehaviour {
                 }
                 else if (playerScript.currWeaponInt == 2){
                     securityEnemy.EnemyHealth -= playerScript.playerDamageGauntlet;
+                }
+            } else if (titanEnemy != null)
+            {
+                if (playerScript.currWeaponInt == 0){
+                    titanEnemy.health -= playerScript.playerDamagePistol;
+                    GameObject.Find("PlayerCharacter").GetComponent<Actions>().Attack();
+                    print("hey" + titanEnemy.health);
                 }
             }
             //This does stuff tho

@@ -16,6 +16,7 @@
           <e p="CutScene1.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
           <e p="EnemyShooting.cs" t="Include" />
+          <e p="ExitGame.cs" t="Include" />
           <e p="FollowCam.cs" t="Include" />
           <e p="LoadScene.cs" t="Include" />
           <e p="Mission1Scripts" t="Include">
@@ -30,6 +31,7 @@
           </e>
           <e p="Mission2Scripts" t="Include">
             <e p="Mission2ConsoleDialog.cs" t="Include" />
+            <e p="Mission2LevelDialog.cs" t="Include" />
             <e p="TitanActivator.cs" t="Include" />
           </e>
           <e p="MutantFiddlePlayer.cs" t="Include" />
