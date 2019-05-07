@@ -36,11 +36,14 @@ public class Mission2ConsoleDialog : MonoBehaviour {
 			if (!waitingForClick){
 				if (counter == 0){
 					foreach (GameObject enemy in enemies){
-						enemy.GetComponent<SecurityEnemy>().enabled = false;
-						enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 0;
-						enemy.transform.GetChild(2).gameObject.SetActive(false);
+						if (enemy != null){
+							enemy.GetComponent<SecurityEnemy>().enabled = false;
+							enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 0;
+							enemy.transform.GetChild(2).gameObject.SetActive(false);
+						}
 					}
 					player.GetComponent<PlayerControllerCylinder>().enabled = false;
+					player.GetComponent<PlayerControllerCylinder>().equipped = false;
 					player.GetComponent<Animator>().SetFloat("Speed",0);
 					changeDialog("Admin: That console controls the Core installation systems.  You can use it to disable the factory.");
 					waitingForClick = true;
@@ -105,9 +108,11 @@ public class Mission2ConsoleDialog : MonoBehaviour {
 				else if (counter == 120){
 					clearDialog();
 					foreach (GameObject enemy in enemies){
-						enemy.GetComponent<SecurityEnemy>().enabled = true;
-						enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 3;
-						enemy.transform.GetChild(2).gameObject.SetActive(true);
+						if (enemy != null){
+							enemy.GetComponent<SecurityEnemy>().enabled = true;
+							enemy.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 3;
+							enemy.transform.GetChild(2).gameObject.SetActive(true);
+						}
 					}
 					player.GetComponent<PlayerControllerCylinder>().enabled = true;
 					player.GetComponent<Animator>().SetFloat("Speed",player.GetComponent<PlayerControllerCylinder>().speed);

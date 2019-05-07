@@ -33,6 +33,7 @@ public class Mission2LevelDialog : MonoBehaviour {
 					waitingForClick = true;
 					changeDialog("Admin: You know, there’s a rumor going around that these AI aren’t just self-aware. They’re actually sentient, capable of feeling things like love, regret, mercy, and -");
 					this.GetComponent<PlayerControllerCylinder>().enabled = false;
+					this.GetComponent<PlayerControllerCylinder>().equipped = false;
 					GameObject.Find("PlayerCharacter").GetComponent<Actions>().Stay();
 				}
 				else if (counter == 10){
