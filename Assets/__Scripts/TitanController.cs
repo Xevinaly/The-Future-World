@@ -95,22 +95,21 @@ public class TitanController : MonoBehaviour
 	
 	private void Shoot(Vector3 target)
 	{
+		target = target + new Vector3(0, 6, 0);
 		gunStartup.Stop();
 		gunLine.enabled = true;
-		gunLine.SetPosition(0, gun.transform.position);
+		Vector3 gunStart = gun.transform.position - new Vector3(0, 0, 1);
+		gunLine.SetPosition(0, gunStart);
 
-		if(Physics.Raycast(transform.position, target - transform.position, out hit))
+		if(Physics.Raycast(transform.position, POI.transform.position - transform.position, out hit))
 		{
-			if (hit.collider.gameObject.CompareTag("Player"))
+			PlayerControllerCylinder player = hit.collider.GetComponent<PlayerControllerCylinder>();
+			if (player != null)
 			{
-				hit.collider.gameObject.GetComponent<PlayerControllerCylinder>().PlayerHealth -= EnemyDamage;
+				player.PlayerHealth -= EnemyDamage;
 			}
-		gunLine.SetPosition(1, hit.point);
 		}
-		else
-		{
-			gunLine.SetPosition(1, target);
-		}
+		gunLine.SetPosition(1, target);
 	}
 
 	public void startShot()
