@@ -1270,6 +1270,18 @@ Prefab:
       propertyPath: m_Radius
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: cfef738579cd02c40b3b1d63e67b0f84, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: cfef738579cd02c40b3b1d63e67b0f84, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: cfef738579cd02c40b3b1d63e67b0f84, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 6.42
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfef738579cd02c40b3b1d63e67b0f84, type: 2}
   m_IsPrefabParent: 0
@@ -2148,6 +2160,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1585653795963946, guid: 7c7885317c5e77d4f9703873a3c7caaa,
     type: 2}
   m_PrefabInternal: {fileID: 436512720}
+--- !u!114 &436512722 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114021963080386424, guid: 7c7885317c5e77d4f9703873a3c7caaa,
+    type: 2}
+  m_PrefabInternal: {fileID: 436512720}
+  m_Script: {fileID: 11500000, guid: 379d1aa2e56caef49886ba5486ba8d40, type: 3}
 --- !u!114 &436512723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4225,6 +4243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   titan: {fileID: 353404903}
+  cam: {fileID: 1683892358}
+  player: {fileID: 436512722}
 --- !u!1 &1394374245
 GameObject:
   m_ObjectHideFlags: 0
@@ -4848,13 +4868,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1683892353}
-  m_LocalRotation: {x: 0.14482173, y: 0.6921176, z: -0.14482175, w: 0.6921176}
-  m_LocalPosition: {x: -234.3, y: 16.5, z: -29}
+  m_LocalRotation: {x: 0.18301274, y: 0.6830127, z: -0.18301274, w: 0.6830127}
+  m_LocalPosition: {x: -242.72, y: 19.4, z: -29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 23.637001, y: 90.00001, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 90, z: 0}
 --- !u!114 &1683892358
 MonoBehaviour:
   m_ObjectHideFlags: 0
