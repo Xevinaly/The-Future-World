@@ -11,6 +11,8 @@ public class FollowCam : MonoBehaviour {
     [Header("Set Dynamically")]
     public float camZ;
 
+    private Vector3 rotateTempValue;
+
     private Vector3 distance;
 
     // Use this for initialization
@@ -24,5 +26,14 @@ public class FollowCam : MonoBehaviour {
         if (POI == null) return;
         Vector3 temp = POI.transform.position + distance;
         transform.position = Vector3.Lerp(transform.position, temp, 5.0f * Time.deltaTime);
+    }
+
+    public void rotateAndZoomOut()
+    {
+        rotateTempValue = POI.transform.position;
+        rotateTempValue += new Vector3(0, 32, 28);
+        transform.position = rotateTempValue;
+        transform.eulerAngles = new Vector3(30, 180, 0);
+        distance = transform.position - POI.transform.position;
     }
 }

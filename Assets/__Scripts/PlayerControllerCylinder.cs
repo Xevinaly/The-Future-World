@@ -176,4 +176,10 @@ public class PlayerControllerCylinder : MonoBehaviour
         GetComponent<Actions>().Stay();
         GetComponent<PlayerController>().SetArsenal("Empty");
     }
+
+    public void rotate90()
+    {
+        directionFixHorizonal = new Vector3(-1, 0, 0);
+        directionFixVertical = new Vector3(0, 0, -1);
+    }
 }
