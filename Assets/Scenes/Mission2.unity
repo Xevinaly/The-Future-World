@@ -1471,6 +1471,18 @@ Prefab:
       propertyPath: isActivated
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1815969326130434, guid: 28f1b1baaa1b17545931addc3140d5aa, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1208595375498802, guid: 28f1b1baaa1b17545931addc3140d5aa, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1758739028622986, guid: 28f1b1baaa1b17545931addc3140d5aa, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28f1b1baaa1b17545931addc3140d5aa, type: 2}
   m_IsPrefabParent: 0
@@ -2357,6 +2369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogPanel: {fileID: 73277595}
   dialog: {fileID: 1874008970}
+  door: {fileID: 1492496336}
   doorTriggered: 0
 --- !u!1001 &502370726
 Prefab:

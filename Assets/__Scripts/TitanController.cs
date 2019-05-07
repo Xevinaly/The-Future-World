@@ -40,6 +40,11 @@ public class TitanController : MonoBehaviour
 	{
 		if (isActivated)
 		{
+			if (health <= 0)
+			{
+				Instantiate(explosion, this.transform);
+				Destroy(this.gameObject, 1f);
+			}
 			transform.LookAt(POI.transform.position);
 			AttemptShot();
 			Move();

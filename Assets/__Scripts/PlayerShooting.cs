@@ -73,7 +73,6 @@ public class PlayerShooting : MonoBehaviour {
 
         if(Physics.Raycast(shootRay.origin, shootRay.direction, out shootHit, range, shootableMask, QueryTriggerInteraction.Ignore))
         {
-            print(shootHit.collider.name);
             Enemy enemy = shootHit.collider.GetComponent<Enemy>();
             SecurityEnemy securityEnemy = shootHit.collider.GetComponent<SecurityEnemy>();
             TitanController titanEnemy = shootHit.collider.GetComponent<TitanController>();
@@ -109,7 +108,6 @@ public class PlayerShooting : MonoBehaviour {
                 if (playerScript.currWeaponInt == 0){
                     titanEnemy.health -= playerScript.playerDamagePistol;
                     GameObject.Find("PlayerCharacter").GetComponent<Actions>().Attack();
-                    print("hey" + titanEnemy.health);
                 }
             }
             else if (shootHit.collider.CompareTag("Wall"))
