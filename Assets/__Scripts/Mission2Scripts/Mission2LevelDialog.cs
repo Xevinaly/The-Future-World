@@ -8,6 +8,7 @@ public class Mission2LevelDialog : MonoBehaviour {
 	[Header("Set in Inspector")]
 	public GameObject dialogPanel;
 	public GameObject dialog;
+	public GameObject door;
 
 	private Text textBox;
 
@@ -20,6 +21,8 @@ public class Mission2LevelDialog : MonoBehaviour {
 	void Start () {
 		textBox = dialog.GetComponent<Text>();
 		changeDialog("Percy: Your objective is twofold: disable the factory and obtain schematics of the newest line of Robots. Do not fail me...and come back safe.");
+		this.GetComponent<PlayerControllerCylinder>().enabled = false;
+
 	}
 	
 	// Update is called once per frame
@@ -27,6 +30,7 @@ public class Mission2LevelDialog : MonoBehaviour {
 		if (!waitingForClick){
 			if (counter == 0){
 				clearDialog();
+			this.GetComponent<PlayerControllerCylinder>().enabled = true;	
 			}
 			if (doorTriggered){
 				if (counter == 0){
@@ -51,6 +55,7 @@ public class Mission2LevelDialog : MonoBehaviour {
 				else if (counter == 40){
 					clearDialog();
 					this.GetComponent<PlayerControllerCylinder>().enabled = true;
+					door.GetComponent<Animation>().enabled = false;
 				}
 				counter++;
 
