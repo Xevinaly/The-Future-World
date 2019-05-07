@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 using System;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class PlayerControllerCylinder : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerControllerCylinder : MonoBehaviour
     private int equippedWait = 0;
     [Header("Set in Inspector")]
     public float speed = 0.5f;
+    public float PlayerMaxHealth = 100f;
     public float PlayerHealth = 100.0f;
     public int playerDamagePistol = 10;
     public int playerDamageCloseRange = 5;
@@ -24,6 +26,7 @@ public class PlayerControllerCylinder : MonoBehaviour
     public int currWeaponInt;
     public Vector3 directionFixHorizonal;
     public Vector3 directionFixVertical;
+    public Slider HealthBar;
  
 
     float angle = 0;
@@ -36,6 +39,8 @@ public class PlayerControllerCylinder : MonoBehaviour
         anim = GetComponent<Animator>();
         camdiff = Camera.main.transform.position.y - transform.position.y;
         nav = GetComponent<NavMeshAgent>();
+        HealthBar.maxValue = PlayerMaxHealth;
+        HealthBar.minValue = 0f;
     }
     void Start(){
         GetComponent<PlayerController>().SetArsenal("Empty");
@@ -51,6 +56,7 @@ public class PlayerControllerCylinder : MonoBehaviour
         Rotate();
         Move();
         equippedWait++;
+        HealthBar.value = PlayerHealth;
         if (Input.GetKeyDown("space") && equippedWait > 10)
         {
             if (!equipped){
