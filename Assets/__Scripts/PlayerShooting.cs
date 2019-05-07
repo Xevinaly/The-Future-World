@@ -71,7 +71,7 @@ public class PlayerShooting : MonoBehaviour {
         shootRay.origin = transform.position;
         shootRay.direction = transform.TransformDirection(Vector3.forward);
 
-        if(Physics.Raycast(shootRay, out shootHit, range, shootableMask))
+        if(Physics.Raycast(shootRay, out shootHit, range))
         {
             Enemy enemy = shootHit.collider.GetComponent<Enemy>();
             SecurityEnemy securityEnemy = shootHit.collider.GetComponent<SecurityEnemy>();
