@@ -80,7 +80,7 @@ public class EnemyShooting : MonoBehaviour {
             {
                 Instantiate(bulletHolePrefab, shootHit.point, Quaternion.FromToRotation(Vector3.up, shootHit.normal));
             }
-            gunLine.SetPosition(1, target);
+            gunLine.SetPosition(1, shootHit.point);
         }
         else
         {

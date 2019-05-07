@@ -71,8 +71,9 @@ public class PlayerShooting : MonoBehaviour {
         shootRay.origin = transform.position;
         shootRay.direction = transform.TransformDirection(Vector3.forward);
 
-        if(Physics.Raycast(shootRay, out shootHit, range))
+        if(Physics.Raycast(shootRay.origin, shootRay.direction, out shootHit, range, shootableMask, QueryTriggerInteraction.Ignore))
         {
+            print(shootHit.collider.name);
             Enemy enemy = shootHit.collider.GetComponent<Enemy>();
             SecurityEnemy securityEnemy = shootHit.collider.GetComponent<SecurityEnemy>();
             TitanController titanEnemy = shootHit.collider.GetComponent<TitanController>();
@@ -111,7 +112,6 @@ public class PlayerShooting : MonoBehaviour {
                     print("hey" + titanEnemy.health);
                 }
             }
-            //This does stuff tho
             else if (shootHit.collider.CompareTag("Wall"))
             {
                 Instantiate(bulletHolePrefab, shootHit.point, Quaternion.FromToRotation(Vector3.up, shootHit.normal));
