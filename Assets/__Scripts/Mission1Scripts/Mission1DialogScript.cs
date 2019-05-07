@@ -44,7 +44,7 @@ public class Mission1DialogScript : MonoBehaviour {
             ShootPoint0.GetComponent<LineRenderer>().enabled = false;
         }
 
-        if (transform.position.x <= 230 && !passedSimpleSneak){
+        if (transform.position.x <= 260 && !passedSimpleSneak){
             postSimpleSneakDialog();
             passedSimpleSneak = true;
             GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = false;
