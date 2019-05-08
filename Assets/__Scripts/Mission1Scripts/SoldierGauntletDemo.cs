@@ -12,7 +12,8 @@ public class SoldierGauntletDemo : MonoBehaviour {
 	bool waitingForClick; 
 
     [Header("Set in Inspector")]
-			public GameObject demoCamera;
+	public GameObject demoCamera;
+	public SceneController sc;
 
 	void Awake () {
 		actions = GetComponent<Actions>();
@@ -79,6 +80,7 @@ public class SoldierGauntletDemo : MonoBehaviour {
 			}
 			if (!flag){
 				dialog.changeDialog("Percy: Good work. Now to put that training to the test.  You'll be deployed at 0600 hours");
+				Invoke("loadMission2", 2);
 			}
 	
 		}
@@ -110,4 +112,9 @@ public class SoldierGauntletDemo : MonoBehaviour {
 		currPos.x -= 0.3f;
 		transform.position = currPos; 
     }
+
+	void loadMission2()
+	{
+		sc.loadMission2();
+	}
 }

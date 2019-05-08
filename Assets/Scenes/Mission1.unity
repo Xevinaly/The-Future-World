@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2404,7 +2404,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 190258469}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &190258471
 Behaviour:
   m_ObjectHideFlags: 0
@@ -15927,6 +15927,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   demoCamera: {fileID: 2038967260}
+  sc: {fileID: 1818098319}
+--- !u!114 &1818098319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1818098317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb9f7ecd43707b4286ce5dbde5d38ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingSceneName: Mission1Cutscene
 --- !u!135 &1818098320
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -18359,7 +18372,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2038967260}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &2038967262
 Behaviour:
   m_ObjectHideFlags: 0

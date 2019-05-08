@@ -1592,9 +1592,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379d1aa2e56caef49886ba5486ba8d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipped: 0
   speed: 0.3
+  PlayerMaxHealth: 100
   PlayerHealth: 100
-  playerDamage: 10
+  playerDamagePistol: 10
+  playerDamageCloseRange: 5
+  playerDamageGauntlet: 10
+  mouseDeadzone: 0.2
+  inventory: {fileID: 0}
+  currWeaponInt: 0
+  directionFixHorizonal: {x: 0, y: 0, z: 0}
+  directionFixVertical: {x: 0, y: 0, z: 0}
+  HealthBar: {fileID: 0}
 --- !u!136 &1848159808
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1636,6 +1646,7 @@ GameObject:
   - component: {fileID: 1966839580}
   - component: {fileID: 1966839581}
   - component: {fileID: 1966839585}
+  - component: {fileID: 1966839586}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1649,11 +1660,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1966839579}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce3d905ece19981489ede71fa7730cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
+  resume: {fileID: 0}
 --- !u!114 &1966839581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1666,6 +1679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 0}
+  sc: {fileID: 1966839586}
 --- !u!81 &1966839582
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1817,3 +1831,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1966839586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1966839579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb9f7ecd43707b4286ce5dbde5d38ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingSceneName: Mission1Cutscene

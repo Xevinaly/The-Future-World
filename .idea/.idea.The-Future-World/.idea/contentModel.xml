@@ -42,6 +42,7 @@
           <e p="PlayerShooting.cs" t="Include" />
           <e p="RailNode.cs" t="Include" />
           <e p="RailSystem.cs" t="Include" />
+          <e p="SceneController.cs" t="Include" />
           <e p="SecurityEnemy.cs" t="Include" />
           <e p="TitanController.cs" t="Include" />
           <e p="Transparent.cs" t="Include" />

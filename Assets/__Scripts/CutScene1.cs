@@ -11,6 +11,7 @@ public class CutScene1 : MonoBehaviour {
 
 	[Header("Set in Inspector")]
 	public AudioSource audio;
+	public SceneController sc;
 
 
 	// Use this for initialization
@@ -40,8 +41,8 @@ public class CutScene1 : MonoBehaviour {
 		if (counter == 1100){
 			GameObject.Find("SportyGirl").GetComponent<PlayerControllerCylinder>().enabled = true;
 			// SceneManager.LoadSceneAsync("ProofOfConcept_Joseph", LoadSceneMode.Additive);
-			SceneManager.UnloadSceneAsync("Mission1Cutscene");
-
+			//SceneManager.UnloadSceneAsync("Mission1Cutscene");
+			sc.loadMission1();
 		}
 
 	}

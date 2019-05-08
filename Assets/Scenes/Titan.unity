@@ -434,6 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 1993065197}
+  resume: {fileID: 0}
 --- !u!82 &282840816
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1307,9 +1308,9 @@ GameObject:
   - component: {fileID: 961030555}
   - component: {fileID: 961030554}
   - component: {fileID: 961030553}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -2833,6 +2833,7 @@ GameObject:
   - component: {fileID: 709358235}
   - component: {fileID: 709358234}
   - component: {fileID: 709358233}
+  - component: {fileID: 709358237}
   m_Layer: 11
   m_Name: TitanWall3
   m_TagString: Wall
@@ -2907,6 +2908,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
+--- !u!54 &709358237
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 709358232}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &716109651
 Prefab:
   m_ObjectHideFlags: 0
@@ -3375,6 +3391,7 @@ GameObject:
   - component: {fileID: 804986750}
   - component: {fileID: 804986749}
   - component: {fileID: 804986748}
+  - component: {fileID: 804986752}
   m_Layer: 11
   m_Name: TitanWall2
   m_TagString: Wall
@@ -3449,6 +3466,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!54 &804986752
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 804986747}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &869716137
 GameObject:
   m_ObjectHideFlags: 0
@@ -3820,6 +3852,7 @@ GameObject:
   - component: {fileID: 1002504045}
   - component: {fileID: 1002504044}
   - component: {fileID: 1002504043}
+  - component: {fileID: 1002504047}
   m_Layer: 11
   m_Name: TitanWall5
   m_TagString: Wall
@@ -3894,6 +3927,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!54 &1002504047
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1002504042}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1024585500
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,6 +3953,7 @@ GameObject:
   - component: {fileID: 1024585503}
   - component: {fileID: 1024585502}
   - component: {fileID: 1024585501}
+  - component: {fileID: 1024585505}
   m_Layer: 11
   m_Name: TitanWall4
   m_TagString: Wall
@@ -3979,6 +4028,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!54 &1024585505
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1024585500}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1048410453 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 122752, guid: 11561786059d13346b9af9be81fcbed2, type: 2}
@@ -5428,6 +5492,7 @@ GameObject:
   - component: {fileID: 1756412946}
   - component: {fileID: 1756412945}
   - component: {fileID: 1756412944}
+  - component: {fileID: 1756412948}
   m_Layer: 11
   m_Name: TitanWall1
   m_TagString: Wall
@@ -5502,6 +5567,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!54 &1756412948
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1756412943}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &1773731518
 Prefab:
   m_ObjectHideFlags: 0
@@ -7263,6 +7343,7 @@ GameObject:
   - component: {fileID: 2121600385}
   - component: {fileID: 2121600384}
   - component: {fileID: 2121600383}
+  - component: {fileID: 2121600387}
   m_Layer: 11
   m_Name: TitanWall6
   m_TagString: Wall
@@ -7337,6 +7418,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
+--- !u!54 &2121600387
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2121600382}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &2126032575
 GameObject:
   m_ObjectHideFlags: 0
