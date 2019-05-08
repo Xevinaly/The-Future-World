@@ -16,6 +16,8 @@ public class Mission2LevelDialog : MonoBehaviour {
 
 	private bool waitingForClick = true;
 	public bool doorTriggered;
+	public bool titanTriggered;
+	public bool titanDestroyed;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +29,7 @@ public class Mission2LevelDialog : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		print(titanTriggered);
 		if (!waitingForClick){
 			if (counter == 0){
 				clearDialog();
@@ -56,9 +59,37 @@ public class Mission2LevelDialog : MonoBehaviour {
 					clearDialog();
 					this.GetComponent<PlayerControllerCylinder>().enabled = true;
 					door.GetComponent<Animation>().enabled = false;
+					counter = 99;
+				}
+				if (counter < 100){
+					counter++;
+				}
+
+			}
+			if (titanTriggered){
+				print(counter);
+				if (counter == 100){
+					changeDialog("Katya: What the hell is that?");
+					waitingForClick = true;
+				}
+				else if (counter == 110){
+					changeDialog("Admin: It's a Titan, a pre-war experimental weapon platfom.  They were mounted to ceiling rails for transport during their prototype stage.  The robots must have built their factory arount this one. ");
+					waitingForClick = true;
+				}
+
+				else if (counter == 120){
+					changeDialog("Katya: Nevermind the history lesson, how do I kill it?");
+					waitingForClick = true;
+				}
+
+				else if (counter == 130){
+					changeDialog("Admin: They're too well armored to easily kill by shooting - try to lure it toward the broken part of its rail.  Be careful though, those things hit hard.");
+					waitingForClick = true;
+				}
+				else if (counter == 140){
+					clearDialog();
 				}
 				counter++;
-
 			}
 		}
 		else{

@@ -1483,6 +1483,11 @@ Prefab:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 114124138608279448, guid: 28f1b1baaa1b17545931addc3140d5aa,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 436512721}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28f1b1baaa1b17545931addc3140d5aa, type: 2}
   m_IsPrefabParent: 0
@@ -2371,6 +2376,8 @@ MonoBehaviour:
   dialog: {fileID: 1874008970}
   door: {fileID: 1492496336}
   doorTriggered: 0
+  titanTriggered: 0
+  titanDestroyed: 0
 --- !u!1001 &502370726
 Prefab:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ public class TitanController : MonoBehaviour
 	public GameObject gun;
 	public RaycastHit hit;
 	public GameObject explosion;
+	public GameObject player;
 	
 	void Start ()
 	{
@@ -40,9 +41,12 @@ public class TitanController : MonoBehaviour
 	{
 		if (isActivated)
 		{
+			player.GetComponent<Mission2LevelDialog>().titanTriggered = true;
+
 			if (health <= 0)
 			{
 				Instantiate(explosion, this.transform);
+				player.GetComponent<Mission2LevelDialog>().titanDestroyed = true;
 				Destroy(this.gameObject, 1f);
 			}
 			transform.LookAt(POI.transform.position);
