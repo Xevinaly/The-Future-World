@@ -27,6 +27,8 @@ public class PlayerControllerCylinder : MonoBehaviour
     public Vector3 directionFixHorizonal;
     public Vector3 directionFixVertical;
     public Slider HealthBar;
+    public SceneController sceneController;
+    public String sceneName;
  
 
     float angle = 0;
@@ -57,6 +59,10 @@ public class PlayerControllerCylinder : MonoBehaviour
         Move();
         equippedWait++;
         HealthBar.value = PlayerHealth;
+        if (PlayerHealth <= 0)
+        {
+            sceneController.loadScene(sceneName);
+        }
         if (Input.GetKeyDown("space") && equippedWait > 10)
         {
             if (!equipped){

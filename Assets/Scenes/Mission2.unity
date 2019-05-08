@@ -2298,6 +2298,16 @@ Prefab:
       propertyPath: HealthBar
       value: 
       objectReference: {fileID: 1679468693}
+    - target: {fileID: 114021963080386424, guid: 7c7885317c5e77d4f9703873a3c7caaa,
+        type: 2}
+      propertyPath: sceneName
+      value: Mission2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114021963080386424, guid: 7c7885317c5e77d4f9703873a3c7caaa,
+        type: 2}
+      propertyPath: sceneController
+      value: 
+      objectReference: {fileID: 436512727}
     m_RemovedComponents:
     - {fileID: 54438118758626086, guid: 7c7885317c5e77d4f9703873a3c7caaa, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 7c7885317c5e77d4f9703873a3c7caaa, type: 2}
@@ -2378,6 +2388,17 @@ MonoBehaviour:
   doorTriggered: 0
   titanTriggered: 0
   titanDestroyed: 0
+--- !u!114 &436512727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 436512721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb9f7ecd43707b4286ce5dbde5d38ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &502370726
 Prefab:
   m_ObjectHideFlags: 0
@@ -2846,7 +2867,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &709358233
 BoxCollider:
@@ -3404,7 +3425,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &804986748
 BoxCollider:
@@ -3865,7 +3886,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &1002504043
 BoxCollider:
@@ -3966,7 +3987,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &1024585501
 BoxCollider:
@@ -5505,7 +5526,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &1756412944
 BoxCollider:
@@ -7356,7 +7377,7 @@ GameObject:
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &2121600383
 BoxCollider:

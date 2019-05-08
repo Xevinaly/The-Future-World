@@ -14,4 +14,14 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("Mission2");
     }
 
+    public void loadMission1Cutscene()
+    {
+        SceneManager.LoadScene("Mission1Cutscene");
+    }
+
+    public void loadScene(String sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
 }
