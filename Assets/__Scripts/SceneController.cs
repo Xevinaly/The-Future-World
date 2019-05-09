@@ -19,6 +19,11 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("Mission1Cutscene");
     }
 
+    public void loadGameOver()
+    {
+        SceneManager.LoadScene("GameOver");
+    }
+
     public void loadScene(String sceneName)
     {
         SceneManager.LoadScene(sceneName);

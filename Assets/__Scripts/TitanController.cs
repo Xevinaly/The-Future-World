@@ -25,6 +25,7 @@ public class TitanController : MonoBehaviour
 	public RaycastHit hit;
 	public GameObject explosion;
 	public GameObject player;
+	public SceneController sceneController;
 	
 	void Start ()
 	{
@@ -48,6 +49,7 @@ public class TitanController : MonoBehaviour
 				Instantiate(explosion, this.transform);
 				player.GetComponent<Mission2LevelDialog>().titanDestroyed = true;
 				Destroy(this.gameObject, 1f);
+				Invoke("Die", 3);
 			}
 			transform.LookAt(POI.transform.position);
 			AttemptShot();
@@ -93,6 +95,7 @@ public class TitanController : MonoBehaviour
 		if (currentTarget.isExplosionTrigger)
 		{
 			Destroy(this.gameObject);
+			Invoke("Die", 3);
 			return;
 		}
 
@@ -131,5 +134,10 @@ public class TitanController : MonoBehaviour
 	{
 		isChargingShot = true;
 		gunStartup.Play();
+	}
+
+	void Die()
+	{
+		sceneController.loadGameOver();
 	}
 }
