@@ -94,7 +94,8 @@ public class Mission1DialogScript : MonoBehaviour {
         else if (transform.position.x < 160 && !passedComplexSneak){
             postComplexSneakDialog();
             passedComplexSneak = true;
-            GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = false;
+			GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = false;
+			GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().equipped = false;
             GameObject.Find("PlayerCharacter").GetComponent<Actions>().Stay();
             talking = true;
             if (StandardRobot1 != null){

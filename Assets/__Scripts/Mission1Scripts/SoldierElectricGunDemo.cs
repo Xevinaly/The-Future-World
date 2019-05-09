@@ -26,6 +26,8 @@ public class SoldierElectricGunDemo : MonoBehaviour {
 		GetComponent<PlayerController>().SetArsenal("StunGun");
 		if (playerEntered && !waitingForClick){
 			if (counter == 0){
+				GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = false;
+				GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().equipped = false;
 				demoCamera.SetActive(true);
 				dialog.changeDialog("Electrician: When the war first started, a couple of scientists thought it would be possible to short out the machines' circuits with a jolt of electricity.  It worked for a while, but then the robots upgraded.  ");
 			}

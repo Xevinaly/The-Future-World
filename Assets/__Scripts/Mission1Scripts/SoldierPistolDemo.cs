@@ -25,6 +25,8 @@ public class SoldierPistolDemo : MonoBehaviour {
 		GetComponent<PlayerController>().SetArsenal("Pistol");
 		if (playerEntered && !waitingForClick){
 			if (counter == 0){
+				GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = false;
+				GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().equipped = false;
 				demoCamera.SetActive(true);
 				dialog.changeDialog("Soldier: Alright, I’m only going to say this once. Even though these things are machines, it doesn’t mean they’re invulnerable. If you shoot them enough, sooner or later, you’ll hit something important.");
 

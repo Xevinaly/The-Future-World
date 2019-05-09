@@ -24,9 +24,10 @@ public class SoldierGauntletDemo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		GetComponent<PlayerController>().SetArsenal("Gauntlet");
 		if (playerEntered && !waitingForClick){
 			if (counter == 0){
+				GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = false;
+				GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().equipped = false;
 				demoCamera.SetActive(true);
 				dialog.changeDialog("Ranger: I'll make this quick, so pay attention.  You've been given a Dart Gauntlet like I have. You have two options with it. Option one, melee attack -");
 				waitingForClick = true;
@@ -94,6 +95,7 @@ public class SoldierGauntletDemo : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player") && !playerEntered) 
         {
+			GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = false;
 			GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = false;
 			GameObject.Find("PlayerCharacter").GetComponent<Actions>().Stay();
 			playerEntered = true;
