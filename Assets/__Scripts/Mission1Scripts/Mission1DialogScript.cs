@@ -35,11 +35,11 @@ public class Mission1DialogScript : MonoBehaviour {
     
     public void Update(){
         timer++;
-        if (talking && (ShootPoint1.GetComponent<Light>().enabled == true || ShootPoint1.GetComponent<LineRenderer>().enabled == true)){
+        if (talking && StandardRobot1 != null && (ShootPoint1.GetComponent<Light>().enabled == true || ShootPoint1.GetComponent<LineRenderer>().enabled == true)){
             ShootPoint1.GetComponent<Light>().enabled = false;
             ShootPoint1.GetComponent<LineRenderer>().enabled = false;
         }
-        if (talking && (ShootPoint0.GetComponent<Light>().enabled == true || ShootPoint0.GetComponent<LineRenderer>().enabled == true)){
+        if (talking && StandardRobot0 != null && (ShootPoint0.GetComponent<Light>().enabled == true || ShootPoint0.GetComponent<LineRenderer>().enabled == true)){
             ShootPoint0.GetComponent<Light>().enabled = false;
             ShootPoint0.GetComponent<LineRenderer>().enabled = false;
         }
@@ -48,29 +48,27 @@ public class Mission1DialogScript : MonoBehaviour {
             postSimpleSneakDialog();
             passedSimpleSneak = true;
             GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = false;
+			GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().equipped = false;
             GameObject.Find("PlayerCharacter").GetComponent<Actions>().Stay();
 
-
-            StandardRobot1.GetComponent<NavMeshAgent>().speed = 0;
-            StandardRobot1.GetComponent<Enemy>().enabled = false;
-            ShootPoint1.GetComponent<EnemyShooting>().DisableEffects();
-            ShootPoint1.GetComponent<EnemyShooting>().enabled = false;
-            ShootPoint1.GetComponent<Light>().enabled = false;
-            ShootPoint1.GetComponent<LineRenderer>().enabled = false;
-
-            StandardRobot0.GetComponent<NavMeshAgent>().speed = 0;
-            StandardRobot0.GetComponent<Enemy>().enabled = false;
-            ShootPoint0.GetComponent<EnemyShooting>().DisableEffects();
-            ShootPoint0.GetComponent<EnemyShooting>().enabled = false;
-            ShootPoint0.GetComponent<Light>().enabled = false;
-            ShootPoint0.GetComponent<LineRenderer>().enabled = false;
-            talking = true;
-            lastClick = timer;
-
-
-
-
-
+            if (StandardRobot1 != null){
+                StandardRobot1.GetComponent<NavMeshAgent>().speed = 0;
+                StandardRobot1.GetComponent<Enemy>().enabled = false;
+                ShootPoint1.GetComponent<EnemyShooting>().DisableEffects();
+                ShootPoint1.GetComponent<EnemyShooting>().enabled = false;
+                ShootPoint1.GetComponent<Light>().enabled = false;
+                ShootPoint1.GetComponent<LineRenderer>().enabled = false;
+            }
+            if (StandardRobot0 != null){
+                StandardRobot0.GetComponent<NavMeshAgent>().speed = 0;
+                StandardRobot0.GetComponent<Enemy>().enabled = false;
+                ShootPoint0.GetComponent<EnemyShooting>().DisableEffects();
+                ShootPoint0.GetComponent<EnemyShooting>().enabled = false;
+                ShootPoint0.GetComponent<Light>().enabled = false;
+                ShootPoint0.GetComponent<LineRenderer>().enabled = false;
+                talking = true;
+                lastClick = timer;
+            }
         }
 
         else if (Input.GetButton("Fire1") && dialogClicks == 0 && !passedComplexSneak && (timer - lastClick > 10) && passedSimpleSneak){
@@ -84,9 +82,11 @@ public class Mission1DialogScript : MonoBehaviour {
             clearDialog();
             dialogClicks++;
             GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = true;
-            StandardRobot1.GetComponent<NavMeshAgent>().speed = 4;
-            StandardRobot1.GetComponent<Enemy>().enabled = true;
-            ShootPoint1.GetComponent<EnemyShooting>().enabled = true;
+            if (StandardRobot1 != null){
+                StandardRobot1.GetComponent<NavMeshAgent>().speed = 4;
+                StandardRobot1.GetComponent<Enemy>().enabled = true;
+                ShootPoint1.GetComponent<EnemyShooting>().enabled = true;
+            }
             talking = false;
 
         }
@@ -97,12 +97,14 @@ public class Mission1DialogScript : MonoBehaviour {
             GameObject.Find("PlayerCharacter").GetComponent<PlayerControllerCylinder>().enabled = false;
             GameObject.Find("PlayerCharacter").GetComponent<Actions>().Stay();
             talking = true;
-            StandardRobot1.GetComponent<NavMeshAgent>().speed = 0;
-            StandardRobot1.GetComponent<Enemy>().enabled = false;
-            ShootPoint1.GetComponent<EnemyShooting>().DisableEffects();
-            ShootPoint1.GetComponent<EnemyShooting>().enabled = false;
-            ShootPoint1.GetComponent<Light>().enabled = false;
-            ShootPoint1.GetComponent<LineRenderer>().enabled = false;
+            if (StandardRobot1 != null){
+                StandardRobot1.GetComponent<NavMeshAgent>().speed = 0;
+                StandardRobot1.GetComponent<Enemy>().enabled = false;
+                ShootPoint1.GetComponent<EnemyShooting>().DisableEffects();
+                ShootPoint1.GetComponent<EnemyShooting>().enabled = false;
+                ShootPoint1.GetComponent<Light>().enabled = false;
+                ShootPoint1.GetComponent<LineRenderer>().enabled = false;
+            }
         }
         else if (Input.GetButton("Fire1") && dialogClicks == 2 && passedComplexSneak){
             clearDialog();
